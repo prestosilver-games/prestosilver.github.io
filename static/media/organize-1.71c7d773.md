@@ -30,7 +30,7 @@ XDG_VIDEOS_DIR="$HOME/"
 
 ![My doc directory](/Images/organize-2.png)
 
-My docuents directory contains not only docuents but also my repositories. I keep my repositories in the `rep` folder under a path with the website theyre origin exists in.
+My documents directory contains not only documents but also my repositories. I keep my repositories in the `rep` folder under a path with the website theyre origin exists in.
 I keep the markdown source for all my documents in `src` and it compiles to `pdf`.
 
 ## Pictures Directory
