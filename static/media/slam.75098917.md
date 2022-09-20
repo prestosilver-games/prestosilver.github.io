@@ -1,6 +1,6 @@
 ## About
 
-Ive always wanted to make my own programming language, so heres the process.
+I've always wanted to make my own programming language, so here is the process.
 
 ## Inspiration
 
@@ -28,9 +28,40 @@ proc main 0 0
 end
 ```
 
+### Arithmetic
+
+```slam
+{
+Slam uses Reverse polish notation for math
+instead of writing a operation b you
+run a b operation, so for example 4 + 3 would
+be
+}
+
+4 3 +
+(int.print)
+
+{
+subtraction has an order still, you need to put the
+2nd parameter second, 4 - 3 would be
+}
+4 3 -
+(int.print)
+
+{
+slam by default has no division operation
+instead it has /% which pushes the result and the
+remainder to the stack. though there are shortcuts
+in stdlib.slm that allow you to / and % individually.
+}
+100 10 /%
+(int.print)
+(int.print)
+```
+
 ### Defining Procs (functions)
 
-```
+```slam
 {
 this defines a proc named foo, it will
 have access to the top 2 items in the
@@ -51,7 +82,7 @@ be defined by putting the identifier
 oper before the name.
 }
 oper
-proc foo-op1 0 0
+proc bar 0 0
   
   ret
 end
@@ -65,12 +96,42 @@ end
 
 ### Calling Procs
 
-```
+```slam
 (foo)
             
 {to call a operation proc just write its name}
 
 bar
+```
+
+### Blocks
+
+```slam
+{
+A block is created by wrapping a sequence of
+operations in [], a block counts as one command.
+This is useful for if statements
+}
+[
+  (foo) bar
+]
+{
+due to limitations in slam, you cannont create a block inside a block.
+}
+
+```
+
+### if statements
+
+```slam
+{
+an if statement pops the last item on the stack
+if this item is 0 it skips the next command
+}
+100 10 /
+10 == if [
+  "10 / 100 is 10"
+]
 ```
 
 ### Classes
