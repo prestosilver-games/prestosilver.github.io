@@ -1,14 +1,16 @@
 %title: My Love & Ponystep ratings
-%date: 2025 06/26
+%date: 2025 07/19
 
-Chapter 1
+I liked this album alot and wanted to make a full writeup of my feelings about it.
+
+%head: Chapter 1
 Angel with a Longshot (Courier Overture) [ft. Jedwill]
 9.5 - Good opening, really like the fusion dubstep rock feel, really prepares for the album. Wish it played more into the experimental side of the album tho.
 EDIT: this track really really grew on me 8.5 -> 9.5
 
 Ch 1: SVU-AS (Heartbreak Intro) [ft. Lenval Brown]
 7.0 - Not sure if I need to rate the interludes bc they're not music, but its fine other than the fact that ill need to skip on cd.
- 
+
 My Love is a Quickscope (Original Mix)
 8.5 - This is the only track where top 5 gets kinda annoying, really like the nod to my favorite song telephone tho. Introducing the yelling here really helps this track not be a mid 7.
 
@@ -24,8 +26,8 @@ Falling in Love With a Corporate Illustration
 
 Wonka X Howl
 9.8 - Was not expecting something this poppy to be in this album, this will problaby be the one I listen to the most from this album. Its catchy and really good out of context.
- 
-Chapter 2
+
+%head: Chapter 2
 Ch 2: XPR-50 (It's All About the Game) [ft. Lenval Brown]
 5.0 - Another interlude, fine ig but man I dont want to hear top 5 talking shit about herself for 3 min
 
@@ -39,11 +41,12 @@ The Slow Dance
 9.3 - One of vylets best acoustic guitar tracks, really surrounds you like pest, an amazing precursor to the climax of the album. Could pick up a bit faster tho to keep up with the pace of the album.
 
 Comet Catcher and the Reek Fish
-9.8 - Actually an insane great mental breakdown track, love the gituar and top 5 mental screming, but over all those chops of literal breathing with the idk the name of the style melody. Really no words describe how this makes me feel. 
+9.8 - Actually an insane great mental breakdown track, love the gituar and top 5 mental screming, but over all those chops of literal breathing with the idk the name of the style melody. Really no words describe how this makes me feel.
 
 Lightning Bolt
 9.9 - I thought Reek fish was my favorite track in the album, but like dubstep with the emotion put into this track is insane, really really good, like actually insane. It keeps up with the 2000s web nature of this album too with the way it does dubstep, feels like a cool play on youtube intro music.
-Chapter 3
+
+%head: Chapter 3
 Ch 3: Ballista (Dear Aria, I Love Myself) [ft. Lenval Brown]
 5.0 - It was around here the interludes got old. Almost lenval browned my pants at this point in the album but then this played.
 
@@ -58,8 +61,8 @@ LiveLaughLove2 [ft. Moesnail]
 
 A Digital Flower Field
 10 - Yea amazing, dont think theres really anything to say other that now my top track of all time. Actually had me crying, something about it just really hit. (yes my first 10)
- 
-Chapter 4
+
+%head: Chapter 4
 Ch 4: DSR-50 (O' Laniakea, Quell Not The Love Which Overflows From Me) [ft. Lenval Brown]
 7 - might still be high from Digital Flower Field but this was a more barable interlude.
 
@@ -68,3 +71,5 @@ Love & Ponystep (ft. Tracey Brakes)
 
 Ghostie Dub (Here to Light this Up) [Bonus Track/Outro]
 8.0 - Good wind down, could have a bit more on the melody side but serves itts purpose.
+
+%link: The Album=https://www.vyletpony.com/love-and-ponystep
