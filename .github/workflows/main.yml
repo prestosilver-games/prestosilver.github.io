@@ -14,9 +14,11 @@ jobs:
       - run: |
           mkdir -pv root/posts
           cp posts/index.css root/index.css 
+          cp posts/robots.txt root/robots.txt
+          cp posts/CNAME root/CNAME
           zig build run
       - name: Deploy to gh pages
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
-          path: root/
+          path: root
