@@ -11,14 +11,30 @@ jobs:
         uses: korandoru/setup-zig@v1
         with:
           zig-version: 0.14.0
-      - run: |
+      - name: Generate Site
+        run: |
           mkdir -pv root/posts
           cp posts/index.css root/index.css 
           cp posts/robots.txt root/robots.txt
           cp posts/CNAME root/CNAME
           zig build run
-      - name: Deploy to gh pages
+      - name: Upload to gh pages
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
           path: root
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
