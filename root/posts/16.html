@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Prestosilver</title>
+    <link rel="stylesheet"href="/index.css"/>
+  </head>
+  <body><div class="page-content">
+      <h1 class="page-title">Garbage Collector Stuff</h1>
+      <div class="block">
+        <span class="block-title">About</span>
+        <div class="block-content">
+          I always find it funny when people act like a GC is really slow, it's actually only a notable performance hit if your using cyclic types or trying to mitigate fragmentation, because of the way objects are stored in gced mem most of the time deleting a variable is tipically just a subtraction, unless it's 0 then it deletes it's children
+          <br/>
+          Really what is typically bad about a GC is that it can't run on a thread due to it being a memory thing hence its a pause the world structure which is what's actually bad
+          <br/>
+          Even cycle checking is such a well studied process that it's not horribly expensive
+          <br/>
+          And you could copy nim and bake cycle checking into destructors, completely skipping it for all acyclic types
+          <br/>
+          Tldr garbage collectors are actually super fast, they are just not thread safe
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <h2 class="block-title">Links</h2>
+        <div class="block-content"><div class="links"><div class="link"><a href="/index.html">Home</a></div></div></div>
+      </div>
+      <p class="post-date">
+        Last Modified 
+        2025 06/24
+      </p>
+    </div></body>
+</html>

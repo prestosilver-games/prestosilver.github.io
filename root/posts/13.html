@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>Prestosilver</title>
+    <link rel="stylesheet"href="/index.css"/>
+  </head>
+  <body><div class="page-content">
+      <h1 class="page-title">Bamba 2</h1>
+      <div class="block">
+        <span class="block-title">About</span>
+        <div class="block-content">
+          A remake of my programming language, bamba.
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <span class="block-title">Hello World</span>
+        <div class="block-content">
+          def printf: extfn -> void;
+          <br/>
+          <br/>
+          fdef main: proc -> i32 {
+          <br/>
+          printf("Hello World!");
+          <br/>
+          <br/>
+          return i32(0);
+          <br/>
+          }
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <span class="block-title">Fib</span>
+        <div class="block-content">
+          def fib: proc idx[i32] -> i32 {
+          <br/>
+          if (idx < 2) {
+          <br/>
+          return idx;
+          <br/>
+          }
+          <br/>
+          <br/>
+          return fib(idx - 1) + fib(idx - 2);
+          <br/>
+          }
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <span class="block-title">Main builder builder</span>
+        <div class="block-content">
+          def mainBuilderBuilder: proc T -> class {
+          <br/>
+          return class {
+          <br/>
+          def buildMain: proc value[T] -> (fn -> T) {
+          <br/>
+          return fn -> T {
+          <br/>
+          return value;
+          <br/>
+          }
+          <br/>
+          }
+          <br/>
+          }
+          <br/>
+          }
+          <br/>
+          <br/>
+          fdef main: mainBuilderBuilder(i32).buildMain(0);
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <span class="block-title">Reflection</span>
+        <div class="block-content">
+          - fdef and extfn are dumb keywords, problaby should split them into modifiers.
+          <br/>
+          - Its obnoxious to use ~(*value) to invert a dereferenced value.
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <h2 class="block-title">Links</h2>
+        <div class="block-content"><div class="links">
+            <div class="link"><a href="http://github.com/bob16795/bamba2">GitHub</a></div>
+            <div class="link"><a href="/index.html">Home</a></div>
+          </div></div>
+      </div>
+      <p class="post-date">
+        Last Modified 
+        2023 08/07
+      </p>
+    </div></body>
+</html>

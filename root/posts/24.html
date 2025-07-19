@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Prestosilver</title>
+    <link rel="stylesheet"href="/index.css"/>
+  </head>
+  <body><div class="page-content">
+      <h1 class="page-title">Love for wayland</h1>
+      <div class="block">
+        <span class="block-title">About</span>
+        <div class="block-content">
+          So ive been rewriting my wayland compositor finally, and I never really thought about it but the design behind wayland's LayerSurface stuff is a really smart way of dealing with what it does.
+          <br/>
+          For the uninitated, there are 4 layers  (4 mandatory ones in the spec, but you can make more for your own use)
+          <br/>
+          - background
+          <br/>
+          - decoration-back
+          <br/>
+          - decoration-front
+          <br/>
+          - foreground
+          <br/>
+          and then the windows go in the middle of the decoration, decoration layers have to be reserved and surfaces open on them take up window space. So like a task bar goes in decoration front, your wallpaper goes in background, window borders in decoration front, shadows can be in decoration back.
+          <br/>
+          Whats really nice about this is that it allows for a ton of cool features you'd want, and it just flat out is in the api so if your compositor supports these properly any program that has any feature that uses this is compatible with your compositor. Not only that but since layer surfaces are unaware of their position if you have 2 bars, they are positioned, and avoided by the compositor.
+          <br/>
+          Honestly the whole of wayland is one of those specs that can tell the sheer magnatude of work put in the design. I mean just the wording of api is pretty heavily designed off of a video compositor which are quite well worked on. So alot of the terminology is pretty easy to pick up and the docs don't have any really wild terms that are specific to wayland.
+          <br/>
+          Realized Im grouping waylandroots in with wayland in this rant so some features are actually wayland roots, but still applies
+          <br/>
+          honestly this might just be that ive only used the x11 api for this type of thing, and there is no well used c api ive ever used thats aged worse than that
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <h2 class="block-title">Links</h2>
+        <div class="block-content"><div class="links"><div class="link"><a href="/index.html">Home</a></div></div></div>
+      </div>
+      <p class="post-date">
+        Last Modified 
+        2025 06/19
+      </p>
+    </div></body>
+</html>

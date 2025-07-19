@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Prestosilver</title>
+    <link rel="stylesheet"href="/index.css"/>
+  </head>
+  <body><div class="page-content">
+      <h1 class="page-title">Zig Interfaces</h1>
+      <div class="block">
+        <span class="block-title">About</span>
+        <div class="block-content">
+          I never really thought about it before but interfaces in zig can be kinda bad sometimes.
+          <br/>
+          Because the way you make the naive interface most people make in zig its normally reverse ownership, for example IWindow owns the object that implements it.
+          <br/>
+          Vs in like cpp or rust its normally the correct way (the object implementing IWindow owns the interface it has with IWindow).
+          <br/>
+          Kinda an interesting side effect of having no builtin interfaces, like yea you can add an interface to an object but then you cant have a running collection of the interfaces unless you are storing a running array of pointers to the interface, which is likely a pain though ive never tried it.
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <h2 class="block-title">Links</h2>
+        <div class="block-content"><div class="links"><div class="link"><a href="/index.html">Home</a></div></div></div>
+      </div>
+      <p class="post-date">
+        Last Modified 
+        2025 06/01
+      </p>
+    </div></body>
+</html>

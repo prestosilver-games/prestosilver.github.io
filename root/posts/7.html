@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Prestosilver</title>
+    <link rel="stylesheet"href="/index.css"/>
+  </head>
+  <body><div class="page-content">
+      <h1 class="page-title">Bamba 3</h1>
+      <div class="block">
+        <span class="block-title">About</span>
+        <div class="block-content">
+          A remake of my programming language... again.
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <span class="block-title">Major syntax changes</span>
+        <div class="block-content">
+          // semicolons make more sense
+          <br/>
+          <br/>
+          // changed ~ operator to be !
+          <br/>
+          def a: !(5 == 0);
+          <br/>
+          <br/>
+          // added the force keyword
+          <br/>
+          // void type is now capitalized for consistancy
+          <br/>
+          force def main: fn[] -> Void;
+          <br/>
+          <br/>
+          // replace extfn with extern fn
+          <br/>
+          extern fn printf: fn[] -> Void;
+          <br/>
+          <br/>
+          // function parameters are cleaner
+          <br/>
+          def cls: class {
+          <br/>
+          def a: fn[self: *Self] -> Void;
+          <br/>
+          };
+          <br/>
+          <br/>
+          // unary ops dont need parenthesis
+          <br/>
+          def b: !!(5 == 0);
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <span class="block-title">Reflection</span>
+        <div class="block-content">
+          - It problaby wouldve been cleaner to use operator overides for Values.
+          <br/>
+          - I couldve combined the Node and Value enums.
+          <br/>
+          - Problaby shouldnt force casting, type infrencing bamba4?
+          <br/>
+          - Comptime & emit expressions have weird syntax sometimes
+          <br/>
+          <br/>
+        </div>
+      </div>
+      <div class="block">
+        <h2 class="block-title">Links</h2>
+        <div class="block-content"><div class="links">
+            <div class="link"><a href="http://github.com/bob16795/bamba3">Github</a></div>
+            <div class="link"><a href="/index.html">Home</a></div>
+          </div></div>
+      </div>
+      <p class="post-date">
+        Last Modified 
+        2023 12/09
+      </p>
+    </div></body>
+</html>
