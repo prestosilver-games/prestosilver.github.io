@@ -1,0 +1,22 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build 
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Zig
+        uses: korandoru/setup-zig@v1
+        with:
+          zig-version: 0.14.0
+      - run: |
+          mkdir -pv root/posts
+          cp posts/index.css root/index.css 
+          zig build run
+      - name: Deploy to gh pages
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+        with:
+          path: root/
