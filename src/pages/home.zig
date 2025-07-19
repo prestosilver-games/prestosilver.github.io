@@ -25,7 +25,7 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
 
         const head_css = try dom.makeElement(.html_link);
         try head_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "rel" }, "stylesheet");
-        try head_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, "index.css");
+        try head_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, "/index.css");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_css }, .Suppress);
 
         try rem.Dom.mutation.elementAppend(dom, html, .{ .element = head }, .Suppress);
