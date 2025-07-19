@@ -1,0 +1,12 @@
+%title: Budwm
+%date: 2022 08/23
+
+Budwm is a DWM mod that focuses on containers.
+
+%head: Install
+
+$ git clone http://github.com/bob16795/budwm
+$ cd budwm
+$ make install
+
+%link: Bud Youtube=https://www.youtube.com/c/dubbeltumme

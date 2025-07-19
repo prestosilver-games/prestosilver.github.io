@@ -1,0 +1,25 @@
+%title: Bamba
+%date: 2023 09/01
+
+Another programming language.
+
+%head: Hello World
+def printf: extern -> i32;
+
+def main: proc -> i32 {
+    printf("Hello World!");
+    
+    return 0;
+};
+
+%head: Fib
+
+def fib: proc idx -> i32 {
+    if (idx < 2) {
+        return idx;
+    };
+    
+    return fib(idx - 1) + fib(idx - 2);
+};
+
+%link: Github=http://github.com/bob16795/bamba

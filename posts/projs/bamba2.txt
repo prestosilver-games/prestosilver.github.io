@@ -1,0 +1,45 @@
+%title: Bamba 2
+%date: 2023 08/07
+
+A remake of my programming language, bamba.
+
+%head: Hello World
+
+def printf: extfn -> void;
+
+fdef main: proc -> i32 {
+    printf("Hello World!");
+    
+    return i32(0);
+}
+
+%head: Fib
+
+def fib: proc idx[i32] -> i32 {
+    if (idx < 2) {
+        return idx;
+    }
+    
+    return fib(idx - 1) + fib(idx - 2);
+}
+
+%head: Main builder builder
+
+def mainBuilderBuilder: proc T -> class {
+    return class {
+        def buildMain: proc value[T] -> (fn -> T) {
+            return fn -> T {
+                return value;
+            }
+        } 
+    } 
+}
+
+fdef main: mainBuilderBuilder(i32).buildMain(0);
+
+%head: Reflection
+
+- fdef and extfn are dumb keywords, problaby should split them into modifiers.
+- Its obnoxious to use ~(*value) to invert a dereferenced value.
+
+%link: GitHub=http://github.com/bob16795/bamba2

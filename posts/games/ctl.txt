@@ -1,0 +1,8 @@
+%title: Click To Lose
+%date: 2021 05/21
+
+(This game has a lot of flashing lights, so do not play if you are affected by this)
+
+Have you ever played an incremental game and thought "the numbers are too big", well look no further.
+
+%link: Itch=https://prestosilver.itch.io/click-to-lose

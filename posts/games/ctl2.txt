@@ -1,0 +1,9 @@
+%title: Click To Lose Minus
+%date: 2022 08/23
+
+Click to Lose Minus was a full remake of my first game, It was designed to be less grind.
+
+%head: Wait is this a sequel
+No, this is not a sequel, it's mostly a rewrite to allow me to add more features in the future. There are notably some changes to help remove the grind that people noticed in the original version. There will also cross-platform releases.
+
+%link: Itch=https://prestosilver.itch.io/ctl2

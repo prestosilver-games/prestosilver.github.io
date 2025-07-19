@@ -1,0 +1,7 @@
+% title: Zig Interfaces
+% date: 2025 06/01
+
+I never really thought about it before but interfaces in zig can be kinda bad sometimes.
+Because the way you make the naive interface most people make in zig its normally reverse ownership, for example IWindow owns the object that implements it.
+Vs in like cpp or rust its normally the correct way (the object implementing IWindow owns the interface it has with IWindow).
+Kinda an interesting side effect of having no builtin interfaces, like yea you can add an interface to an object but then you cant have a running collection of the interfaces unless you are storing a running array of pointers to the interface, which is likely a pain though ive never tried it.

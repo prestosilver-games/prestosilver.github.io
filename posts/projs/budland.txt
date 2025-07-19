@@ -1,0 +1,12 @@
+%title: Budland
+%date: 2023 09/01 
+
+I recently remade budwm for Wayland in Zig.
+
+%head: Upgrades
+
+- Budland is way faster.
+- Budland supports any Wayland bar.
+- Budland supports a config file.
+
+%link: GitHub=https://github.com/bob16795/budland
