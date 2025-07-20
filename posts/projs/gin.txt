@@ -4,13 +4,14 @@
 Gin (Game engine In Nim) is a game engine written in Nim, but the more I look back at it, the more I realize it was just a graphics & sound library. Yes it managed the game loop but it didn't manage anything else, resulting in the user essentially writing a whole engine on top of gin.
 
 %head: Install
-
+%code: shell
 $ nimble install http://github.com/bob16795/gin
-
+%end: code
 %head: Usage
 Gin introduces a template, called "Game" which can be used as a game loop.
 
 %head: Example
+%code: nim
 import gin
 import gin/graphics
 
@@ -41,10 +42,10 @@ Game:
   template Draw(dt: cuint, ctx: GraphicsContext) =
     # render the next frame
     clearBuffer(background) # clear the screen
-  
+
   template Close() =
     # ran when the game is closed
     discard
-
-%link: Sleep To Defend=https://prestosilver.itch.io/sleep-to-defend 
+%end: code
+%link: Sleep To Defend=https://prestosilver.itch.io/sleep-to-defend
 %link: The grand finale=https://prestosilver.itch.io/finale

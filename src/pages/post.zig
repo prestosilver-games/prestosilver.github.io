@@ -45,6 +45,20 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try head_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, "/index.css");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_css }, .Suppress);
 
+        const highlight_css = try dom.makeElement(.html_link);
+        try highlight_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "rel" }, "stylesheet");
+        try highlight_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, "/highlight.min.css");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_css }, .Suppress);
+
+        const highlight_js = try dom.makeElement(.html_script);
+        try highlight_js.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "src" }, "/highlight.min.js");
+        try rem.Dom.mutation.elementAppend(dom, highlight_js, .{ .cdata = try dom.makeCdata("", .text) }, .Suppress);
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_js }, .Suppress);
+
+        const highlight_run = try dom.makeElement(.html_script);
+        try rem.Dom.mutation.elementAppend(dom, highlight_run, .{ .cdata = try dom.makeCdata("hljs.highlightAll();", .text) }, .Suppress);
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_run }, .Suppress);
+
         try rem.Dom.mutation.elementAppend(dom, html, .{ .element = head }, .Suppress);
     }
 
@@ -85,8 +99,11 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         var links: std.ArrayList(Links.LinkData) = .init(dom.allocator);
         defer links.deinit();
 
+        var code: ?*rem.Dom.Element = null;
+
         const conts = try file.readToEndAlloc(dom.allocator, 10000000);
         var can_split = false;
+        var do_split = false;
         var split = std.mem.splitScalar(u8, conts, '\n');
         while (split.next()) |line| {
             if (std.mem.startsWith(u8, line, "%")) {
@@ -95,6 +112,29 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
                 const text = std.mem.trim(u8, line[(colon_index + 1)..], &std.ascii.whitespace);
                 if (std.mem.eql(u8, kind, "title")) {
                     try rem.Dom.mutation.elementAppend(dom, title, .{ .cdata = try dom.makeCdata(text, .text) }, .Suppress);
+                }
+
+                if (std.mem.eql(u8, kind, "code")) {
+                    const lang = try std.fmt.allocPrint(dom.allocator, "language-{s}", .{text});
+
+                    const code_pre = try dom.makeElement(.html_pre);
+
+                    const code_block = try dom.makeElement(.html_code);
+                    try code_block.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "class" }, lang);
+
+                    try rem.Dom.mutation.elementAppend(dom, code_pre, .{ .element = code_block }, .Suppress);
+                    try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = code_pre }, .Suppress);
+
+                    code = code_block;
+                    can_split = false;
+                    do_split = false;
+                }
+
+                if (std.mem.eql(u8, kind, "end")) {
+                    if (std.mem.eql(u8, text, "code"))
+                        code = null;
+                    can_split = false;
+                    do_split = false;
                 }
 
                 if (std.mem.eql(u8, kind, "hide")) {
@@ -128,20 +168,43 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
 
                     try rem.Dom.mutation.elementAppend(dom, block, .{ .element = tmp_title }, .Suppress);
                     try rem.Dom.mutation.elementAppend(dom, block, .{ .element = paragraph_conts }, .Suppress);
+                    can_split = false;
+                    do_split = false;
                 }
 
                 continue;
             }
 
-            const text = std.mem.trim(u8, line, &std.ascii.whitespace);
+            if (code) |code_block| {
+                const text = line;
 
-            if (text.len == 0 and can_split) {
-                try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = try dom.makeElement(.html_br) }, .Suppress);
-                can_split = false;
-            } else if (text.len != 0) {
-                try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .cdata = try dom.makeCdata(text, .text) }, .Suppress);
-                try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = try dom.makeElement(.html_br) }, .Suppress);
-                can_split = true;
+                if (text.len == 0 and can_split) {
+                    do_split = true;
+                    can_split = false;
+                } else if (text.len != 0) {
+                    if (do_split) {
+                        try rem.Dom.mutation.elementAppend(dom, code_block, .{ .cdata = try dom.makeCdata("", .text) }, .Suppress);
+                        do_split = false;
+                    }
+                    try rem.Dom.mutation.elementAppend(dom, code_block, .{ .cdata = try dom.makeCdata(text, .text) }, .Suppress);
+                    can_split = true;
+                }
+            } else {
+                const text = std.mem.trim(u8, line, &std.ascii.whitespace);
+
+                if (text.len == 0 and can_split) {
+                    do_split = true;
+                    can_split = false;
+                } else if (text.len != 0) {
+                    if (do_split) {
+                        try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = try dom.makeElement(.html_br) }, .Suppress);
+                        do_split = false;
+                    }
+
+                    try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .cdata = try dom.makeCdata(text, .text) }, .Suppress);
+                    do_split = true;
+                    can_split = true;
+                }
             }
         }
 

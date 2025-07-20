@@ -28,6 +28,20 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
         try head_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, "/index.css");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_css }, .Suppress);
 
+        const highlight_css = try dom.makeElement(.html_link);
+        try highlight_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "rel" }, "stylesheet");
+        try highlight_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, "/highlight.min.css");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_css }, .Suppress);
+
+        const highlight_js = try dom.makeElement(.html_script);
+        try highlight_js.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "src" }, "/highlight.min.js");
+        try rem.Dom.mutation.elementAppend(dom, highlight_js, .{ .cdata = try dom.makeCdata("", .text) }, .Suppress);
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_js }, .Suppress);
+
+        const highlight_run = try dom.makeElement(.html_script);
+        try rem.Dom.mutation.elementAppend(dom, highlight_run, .{ .cdata = try dom.makeCdata("hljs.highlightAll();", .text) }, .Suppress);
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_run }, .Suppress);
+
         try rem.Dom.mutation.elementAppend(dom, html, .{ .element = head }, .Suppress);
     }
 

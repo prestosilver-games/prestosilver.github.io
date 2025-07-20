@@ -14,9 +14,7 @@ jobs:
       - name: Generate Site
         run: |
           mkdir -pv root/posts
-          cp posts/index.css root/index.css 
-          cp posts/robots.txt root/robots.txt
-          cp posts/CNAME root/CNAME
+          cp posts/raw/* root/
           zig build run
       - name: Upload to gh pages
         id: deployment

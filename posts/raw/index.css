@@ -3,11 +3,11 @@
     --background: #f1dab0;
     --foreground: #252323;
     --border: #252323;
-    
+
     --background-secondary: #BD9B61;
     --foreground-secondary: #9F7A39;
     --border-secondary: #9F7A39;
-    
+
     --background-primary: #FC9B4A;
     --foreground-primary: #FFFFFF;
     --border-primary: #FC9B4A;
@@ -20,11 +20,11 @@
     --background: #2E3440;
     --foreground: #D8DEE9;
     --border: #D8DEE9;
-    
+
     --background-secondary: #434C5E;
     --foreground-secondary: #D8DEE9;
     --border-secondary: #4C566A;
-    
+
     --background-primary: #3B4252;
     --foreground-primary: #f9f5d7;
     --border-primary: #4C566A;
@@ -95,7 +95,7 @@ a:hover {
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
-} 
+}
 
 .post-date {
     text-align: right;
@@ -109,7 +109,7 @@ a:hover {
     color: var(--foreground-primary);
 }
 
-.post-content {    
+.post-content {
     border: var(--border-primary) 0.5rem;
     background-color: var(--background);
     color: var(--foreground);
@@ -122,7 +122,7 @@ a:hover {
     color: var(--foreground-secondary);
 }
 
-.block-content {    
+.block-content {
     border: var(--border-secondary) 0.5rem;
     background-color: var(--background);
     color: var(--foreground);
@@ -142,7 +142,7 @@ a:hover {
 
 .post-content {
     position: relative;
-} 
+}
 
 .post:hover .post-title {
     text-decoration: underline;
@@ -201,6 +201,10 @@ a:hover {
     overflow: hidden;
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
+}
+
+pre {
+    margin: 0;
 }
 
 .page-title {

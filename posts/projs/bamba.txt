@@ -4,22 +4,24 @@
 Another programming language.
 
 %head: Hello World
+%code: bamba
 def printf: extern -> i32;
 
 def main: proc -> i32 {
     printf("Hello World!");
-    
+
     return 0;
 };
-
+%end: code
 %head: Fib
-
+%code: bamba
 def fib: proc idx -> i32 {
     if (idx < 2) {
         return idx;
     };
-    
+
     return fib(idx - 1) + fib(idx - 2);
 };
+%end: code
 
 %link: Github=http://github.com/bob16795/bamba

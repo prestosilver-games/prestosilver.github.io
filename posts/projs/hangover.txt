@@ -7,13 +7,15 @@ Hangover is a game engine based on gin. The primary goals of hangover were:
 - Hangover will have an UI system.
 
 %head: Install
+%code: shell
 $ nimble install hangover
+%end: code
 
 %head: Usage
 Like Gin, Hangover introduces a template, called "Game" which can be used as a game loop.
 
 %head: Minimal Example
-
+%code: nim
 import hangover
 
 Game:
@@ -24,7 +26,7 @@ Game:
     ## renders the loading screen
     ## only updates when setPc or setStatus is called in Initialize
     clearBuffer(ctx, bg)
-  
+
   proc Initialize(ctx: var GraphicsContext) =
     ## load content files
     discard
@@ -32,14 +34,14 @@ Game:
   proc Update(deltaTime: float)
     ## process a frame event
     discard
-  
+
   proc Draw(ctx: var GraphicsContext) =
     ## draws a frame
     clearBuffer(ctx, bg)
 
   proc closeGame() =
-    ## called when the game is closed 
+    ## called when the game is closed
     discard
-
+%end: code
 %link: Chesker=https://prestosilver.itch.io/chesker
 %link: Bugz Bows & Curses=https://prestosilver.itch.io/bugz

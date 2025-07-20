@@ -4,7 +4,7 @@
 A remake of my programming language... again.
 
 %head: Major syntax changes
-
+%code: bamba
 // semicolons make more sense
 
 // changed ~ operator to be !
@@ -24,7 +24,7 @@ def cls: class {
 
 // unary ops dont need parenthesis
 def b: !!(5 == 0);
-
+%end: code
 %head: Reflection
 - It problaby wouldve been cleaner to use operator overides for Values.
 - I couldve combined the Node and Value enums.

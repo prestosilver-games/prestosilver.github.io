@@ -54,23 +54,14 @@ pub fn writeElem(writer: anytype, dom: *rem.Dom, element: *rem.Dom.Element) !voi
         defer indent -= 1;
 
         for (element.children.items) |*child| {
-            if (element.children.items.len > 1) {
-                try writer.writeAll("\n");
-                for (0..indent) |_|
-                    try writer.writeAll("  ");
-            }
-
             switch (child.*) {
                 .element => |child_elem| try writeElem(writer, dom, child_elem),
-                .cdata => |char_data| try writer.writeAll(char_data.data.items),
+                .cdata => |char_data| {
+                    try writer.writeAll(char_data.data.items);
+                    try writer.writeAll("\n");
+                },
             }
         }
-    }
-
-    if (element.children.items.len > 1) {
-        try writer.writeAll("\n");
-        for (0..indent) |_|
-            try writer.writeAll("  ");
     }
 
     try writer.writeAll("</");

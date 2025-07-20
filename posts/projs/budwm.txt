@@ -4,9 +4,9 @@
 Budwm is a DWM mod that focuses on containers.
 
 %head: Install
-
+%code: shell
 $ git clone http://github.com/bob16795/budwm
 $ cd budwm
 $ make install
-
+%end: code
 %link: Bud Youtube=https://www.youtube.com/c/dubbeltumme
