@@ -38,7 +38,7 @@
     .dependencies = .{
         .rem = .{
             .url = "https://github.com/chadwain/rem/archive/0afce6bea65d42ec296ca0c0fd1f3f921c49294d.tar.gz",
-            .hash = "rem-0.3.0-K3YxlLUFDgBPnXv6_y--d7ztxujL-uOMhD8yztAibBHb",
+            .hash = "rem-0.3.0-K3YxlCmPBABH1kMYYASBcqq8z3mIt6lDkGPnx361xZ3U",
         },
     },
     .paths = .{
