@@ -81,11 +81,11 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
                     .{ .name = "Discord", .path = "https://discord.com/invite/vrVVXktmfV" },
                     .{ .name = "Youtube", .path = "https://www.youtube.com/channel/UCn3KTSGb3DbbGlS3hYGmsTA" },
                     .{ .name = "Itch", .path = "https://prestosilver.itch.io" },
-                    .{ .name = "GitHub", .path = "https://github.com/bob16795" },
+                    .{ .name = "GitHub", .path = "https://github.com/prestosilver" },
                     .{ .name = "Steam", .path = "https://store.steampowered.com/dev/presosilver" },
                     .{ .name = "Email", .path = "mailto:prestosilver.ptp@gmail.com" },
                     .{ .name = "Google Play", .path = "https://play.google.com/store/apps/dev?id=7954891124376186534" },
-                    .{ .name = "GitHub (Organization)", .path = "https://github.com/prestosilver" },
+                    .{ .name = "GitHub (Organization)", .path = "https://github.com/prestosilver-games" },
                 } },
             },
             Split(Block(List)){
