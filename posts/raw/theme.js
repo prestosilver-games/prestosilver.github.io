@@ -245,16 +245,14 @@ const mapTheme = (variables) => {
   };
 };
 
-
-let new_url = new URLSearchParams(window.location.search);
-
-let theme = new_url.get('theme');
+let theme = document.cookie.split('=')[1];
 
 if (theme == null) theme = randomTheme();
 
 const themeObject = mapTheme(themes[theme]);
 
-window.history.replaceState(null, document.title, window.location.href.split("?")[0] + "?theme=" + theme);
+// window.history.replaceState(null, document.title, window.location.href.split("?")[0] + "?theme=" + theme);
+document.cookie = "theme=" + theme
 
 const root = document.documentElement;
 
