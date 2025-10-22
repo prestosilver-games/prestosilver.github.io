@@ -252,7 +252,7 @@ if (theme == null) theme = 'random';
 
 const themeObject = mapTheme(themes[theme]);
 
-window.history.replaceState(null, document.title, window.location.href.split("?")[0] + "?" + theme);
+window.history.replaceState(null, document.title, window.location.href.split("?")[0] + "?theme=" + theme);
 
 const root = document.documentElement;
 
