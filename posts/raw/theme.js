@@ -221,10 +221,14 @@ const themes = {
   },
 };
 
+const randomTheme = () => {
+    return Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
+};
+
 const mapTheme = (variables) => {
   if (variables == null) {
-    theme = 'yousai';
-    return mapTheme(themes['yousai']);
+    theme = randomTheme();
+    return mapTheme(themes[theme]);
   }
 
   return {
@@ -241,14 +245,12 @@ const mapTheme = (variables) => {
   };
 };
 
-const randomTheme = () => {
-    return Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
-};
 
 let new_url = new URLSearchParams(window.location.search);
 
 let theme = new_url.get('theme');
-if (theme == null) theme = 'random';
+
+if (theme == null) theme = randomTheme();
 
 const themeObject = mapTheme(themes[theme]);
 
