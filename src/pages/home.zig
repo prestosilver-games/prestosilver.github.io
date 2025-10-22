@@ -47,10 +47,6 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
         try rem.Dom.mutation.elementAppend(dom, theme_js, .{ .cdata = try dom.makeCdata("", .text) }, .Suppress);
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = theme_js }, .Suppress);
 
-        const theme_run = try dom.makeElement(.html_script);
-        try rem.Dom.mutation.elementAppend(dom, theme_run, .{ .cdata = try dom.makeCdata("applyTheme('random');", .text) }, .Suppress);
-        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = theme_run }, .Suppress);
-
         try rem.Dom.mutation.elementAppend(dom, html, .{ .element = head }, .Suppress);
     }
 

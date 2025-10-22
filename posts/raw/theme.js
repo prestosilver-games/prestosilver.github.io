@@ -222,6 +222,11 @@ const themes = {
 };
 
 const mapTheme = (variables) => {
+  if (variables == null) {
+    theme = 'yousai';
+    return mapTheme(themes['yousai']);
+  }
+
   return {
     '--foreground': variables.fg || '',
     '--background': variables.bg || '',
@@ -240,19 +245,26 @@ const randomTheme = () => {
     return Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
 };
 
-const applyTheme = (theme) => {
-  const themeObject = (theme == 'random') ?
-        mapTheme(themes[randomTheme()]) :
-        mapTheme(themes[theme]);
-  if (!themeObject) return;
 
-  const root = document.documentElement;
+const theme = urlParams.get('theme');
+if (theme == null) theme = 'random';
 
-  Object.keys(themeObject).forEach((property) => {
-    if (property === 'name') {
-      return;
-    }
 
-    root.style.setProperty(property, themeObject[property]);
-  });
-};
+const themeObject = mapTheme(themes[theme]);
+
+let new_url = document.urlParams;
+new_url.set('theme', theme)
+
+window.history.replaceState(null, document.title, new_url.toString());
+      
+if (!themeObject) return;
+
+const root = document.documentElement;
+
+Object.keys(themeObject).forEach((property) => {
+  if (property === 'name') {
+    return;
+  }
+
+  root.style.setProperty(property, themeObject[property]);
+});
