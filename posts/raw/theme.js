@@ -245,14 +245,30 @@ const mapTheme = (variables) => {
   };
 };
 
-let theme = document.cookie.split('=')[1];
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+let theme = getCookie('tgene')[1];
 
 if (theme == null) theme = randomTheme();
 
 const themeObject = mapTheme(themes[theme]);
 
 // window.history.replaceState(null, document.title, window.location.href.split("?")[0] + "?theme=" + theme);
-document.cookie = "theme=" + theme
+document.cookie = "theme=" + theme + "; path=/;"
 
 const root = document.documentElement;
 
