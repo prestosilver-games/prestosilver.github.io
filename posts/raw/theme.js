@@ -267,8 +267,9 @@ if (theme == null) theme = randomTheme();
 
 const themeObject = mapTheme(themes[theme]);
 
-// window.history.replaceState(null, document.title, window.location.href.split("?")[0] + "?theme=" + theme);
-document.cookie = "theme=" + theme + "; path=/;"
+if (theme != getCookie('theme')) {
+  document.cookie = "theme=" + theme + "; Max-Age=3600; path=/;"
+}
 
 const root = document.documentElement;
 
