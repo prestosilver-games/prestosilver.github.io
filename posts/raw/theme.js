@@ -246,7 +246,7 @@ const randomTheme = () => {
 };
 
 
-const theme = urlParams.get('theme');
+const theme = document.urlParams.get('theme');
 if (theme == null) theme = 'random';
 
 
