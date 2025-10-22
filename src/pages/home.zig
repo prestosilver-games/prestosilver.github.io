@@ -75,12 +75,7 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
             Block(Text){
                 .heading = "About",
                 .conts = .{
-                    .text = "I am a CS major who loves to program. " ++
-                        "I have many small projects that I work on in my free time, these include games, software, and tools. " ++
-                        "I am fluent in writing in Zig, Nim, Python, Html, CSS, C, Rust, C#, Cpp, x86asm, z80asm, Markdown, GDScript, and Slam. " ++
-                        "I also have experience in Forth, Javascript, GLSL, Ruby, Lua and TS. " ++
-                        "I plan to learn Haskell, and GoLang, Cobol (mabye), in the future. " ++
-                        "There are many hobbies I enjoy including Book binding, Bowling, Papercraft, Doodling, and Sewing.",
+                    .text = @embedFile("about.txt"),
                 },
             },
             Block(Links){
