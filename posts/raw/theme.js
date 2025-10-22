@@ -256,8 +256,6 @@ let new_url = document.urlParams;
 new_url.set('theme', theme)
 
 window.history.replaceState(null, document.title, new_url.toString());
-      
-if (!themeObject) return;
 
 const root = document.documentElement;
 
