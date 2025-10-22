@@ -16,7 +16,7 @@
 }
 */
 
-:root {
+/* :root {
     --background: #2E3440;
     --foreground: #D8DEE9;
     --border: #D8DEE9;
@@ -29,6 +29,10 @@
     --foreground-primary: #f9f5d7;
     --border-primary: #4C566A;
 
+    --border-radius: 1em;
+} */
+
+:root {
     --border-radius: 1em;
 }
 
