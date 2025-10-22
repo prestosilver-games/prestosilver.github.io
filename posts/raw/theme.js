@@ -245,17 +245,14 @@ const randomTheme = () => {
     return Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
 };
 
+let new_url = new URLSearchParams(window.location.search);
 
-const theme = document.urlParams.get('theme');
+const theme = new_url.get('theme');
 if (theme == null) theme = 'random';
-
 
 const themeObject = mapTheme(themes[theme]);
 
-let new_url = document.urlParams;
-new_url.set('theme', theme)
-
-window.history.replaceState(null, document.title, new_url.toString());
+window.history.replaceState(null, document.title, window.location.href + "?" + theme);
 
 const root = document.documentElement;
 
