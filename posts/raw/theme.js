@@ -261,7 +261,7 @@ function getCookie(cname) {
   return "";
 }
 
-let theme = getCookie('tgene')[1];
+let theme = getCookie('theme')[1];
 
 if (theme == null) theme = randomTheme();
 
