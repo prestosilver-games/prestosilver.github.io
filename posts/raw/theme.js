@@ -1,4 +1,4 @@
-export const themes = {
+const themes = {
   'blew': {
     'fg': '#aeb7e8',
     'bg': '#030826',
@@ -221,7 +221,7 @@ export const themes = {
   },
 };
 
-export const mapTheme = (variables) => {
+const mapTheme = (variables) => {
   return {
     '--foreground': variables.fg || '',
     '--background': variables.bg || '',
@@ -236,11 +236,11 @@ export const mapTheme = (variables) => {
   };
 };
 
-export const randomTheme = () => {
+const randomTheme = () => {
     return Object.keys(themes)[Math.floor(Math.random()*Object.keys(themes).length)];
 };
 
-export const applyTheme = (theme) => {
+const applyTheme = (theme) => {
   const themeObject = (theme == 'random') ?
         mapTheme(themes[randomTheme()]) :
         mapTheme(themes[theme]);
