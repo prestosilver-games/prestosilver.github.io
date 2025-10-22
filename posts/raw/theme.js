@@ -247,12 +247,12 @@ const randomTheme = () => {
 
 let new_url = new URLSearchParams(window.location.search);
 
-const theme = new_url.get('theme');
+let theme = new_url.get('theme');
 if (theme == null) theme = 'random';
 
 const themeObject = mapTheme(themes[theme]);
 
-window.history.replaceState(null, document.title, window.location.href + "?" + theme);
+window.history.replaceState(null, document.title, window.location.href.split("?")[0] + "?" + theme);
 
 const root = document.documentElement;
 
