@@ -280,3 +280,26 @@ Object.keys(themeObject).forEach((property) => {
 
   root.style.setProperty(property, themeObject[property]);
 });
+
+addEventListener("keypress", (event) => {
+  if (event.key != "T") 
+    return;
+
+  theme = randomTheme();
+
+  const themeObject = mapTheme(themes[theme]);
+
+  if (theme != getCookie('theme')) {
+    document.cookie = "theme=" + theme + "; Max-Age=3600; path=/;"
+  }
+
+  const root = document.documentElement;
+
+  Object.keys(themeObject).forEach((property) => {
+    if (property === 'name') {
+      return;
+    }
+
+    root.style.setProperty(property, themeObject[property]);
+  });
+});
