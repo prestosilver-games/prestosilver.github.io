@@ -92,11 +92,9 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Element {
 
                     const page: PostPage = .init(try std.fmt.allocPrint(dom.allocator, "{s}/{s}", .{ self.folder, item.name }));
                     const page_conts = try page.gen(dom);
-                    if (page.id.len == 0)
-                        return error.MissingPageId;
 
                     const page_url = page_conts.element.?.getAttribute(.{ .prefix = .none, .namespace = .none, .local_name = "path" }) orelse
-                        return error.MissingUrl;
+                        return error.MissingPageUrl;
 
                     try util.writePage(dom, try std.fs.cwd().openDir("root", .{}), page_conts);
 
