@@ -74,7 +74,10 @@ var wrote: std.ArrayList([]const u8) = .init(allocator);
 pub fn writePage(dom: *rem.Dom, root: std.fs.Dir, document: *rem.Dom.Document) !void {
     if (document.element) |elem| {
         const path = elem.getAttribute(.{ .prefix = .none, .namespace = .none, .local_name = "path" }) orelse return;
-        std.log.info("{s}", .{path});
+        const out = std.io.getStdOut();
+        const out_writer = out.writer();
+
+        try out_writer.write("{s}\n", .{path});
 
         for (wrote.items) |other_path| {
             if (std.mem.eql(u8, path, other_path)) {

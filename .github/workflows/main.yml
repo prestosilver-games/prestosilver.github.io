@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir -pv root/posts
           cp posts/raw/* root/
-          zig build run
+          zig build run > root/sitemap.txt
       - name: Upload to gh pages
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
