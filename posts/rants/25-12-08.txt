@@ -12,7 +12,7 @@ When I was in highschool I was exclusivly programming in nim. It was essentially
 
 All of this can be sharply contrasted by grug, where there is always one way to do things. Ive been following this project for a bit, and its simple nature has captivated me. And with this super simle nature, comes many complexities behind the scenes. The language is still quite young so alot of this is up to discussion, but theres been some common patterns forming already. One great example is how the implemtation of non syntax features has been posed, things like async, datastructures, and iterators. To keep the language dirt simple, most of the time if something can be done outside of grug, in game functions that method will be prefered. This means most features have been promoted in a way where they wont change prospective grug code. 
 
-%link: Nim lang=https://nim-lang. org/
-%link: Nim sdl2 ffi abuse=https://github. com/nim-lang/sdl2/blob/e25c67905142c997a72a52c44c2a9736862894be/src/sdl2/gfx. nim#L730
-%link: Grug blog post=https://mynameistrez. github. io/blog/creating-the-perfect-modding-language
-%link: Grug github=https://github. com/grug-lang/grug
+%link: Nim lang=https://nim-lang.org/
+%link: Nim sdl2 ffi abuse=https://github.com/nim-lang/sdl2/blob/e25c67905142c997a72a52c44c2a9736862894be/src/sdl2/gfx.nim#L730
+%link: Grug blog post=https://mynameistrez.github.io/blog/creating-the-perfect-modding-language
+%link: Grug github=https://github.com/grug-lang/grug
