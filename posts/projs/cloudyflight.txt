@@ -1,5 +1,6 @@
 %title: Cloudy Flight
 %date: 2023 12/09
+%url: cloudy-flight-proj
 
 I recently had a friend ask me to get some cloud rendering for a now debunked project of theirs. I took it way to far and this is the result.
 

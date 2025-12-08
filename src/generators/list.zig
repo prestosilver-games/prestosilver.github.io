@@ -91,9 +91,13 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Element {
                     try elems.append(link);
 
                     const page: PostPage = .init(try std.fmt.allocPrint(dom.allocator, "{s}/{s}", .{ self.folder, item.name }));
-                    const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{}.html", .{page.id});
+                    const conts = try page.gen(dom);
+                    if (page.id == "")
+                        return error.MissingPageId;
 
-                    try util.writePage(dom, try std.fs.cwd().openDir("root", .{}), try page.gen(dom));
+                    const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{s}.html", .{page.id});
+
+                    try util.writePage(dom, try std.fs.cwd().openDir("root", .{}),);
 
                     try link.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, page_url);
                 }

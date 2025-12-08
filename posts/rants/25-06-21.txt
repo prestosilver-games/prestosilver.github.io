@@ -1,5 +1,6 @@
 %title: Zigs while iterator syntax
 %date: 2025 06/21
+%url: zig-while-iterator
 
 Now that I think about it there is a pretty decent reason it [zigs use of while for an iterator] is more idiomatic to use captures, if you unwrap with .? You can segfault which is uncatchable people avoid using it and just use a capture or the const x = x_optional orelse return error.Whatever it's just easier to not have to logic your way to .? being always safe and raise an error
 .? and .* are really only seen alot in C reliant stuff (.* Is also used in init functions alot BC there's no dupe for a single item pointer) 

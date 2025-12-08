@@ -1,5 +1,6 @@
 %title: Budland
 %date: 2023 09/01 
+%url: budland-proj
 
 I recently remade budwm for Wayland in Zig.
 

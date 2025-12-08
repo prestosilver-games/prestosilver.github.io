@@ -1,5 +1,6 @@
 %title: SandEEE, game or not?
 %date: 2025 10/22
+%url: sandee-game-question
 
 Lately while working on sandeee Ive been having a bit of trouble with direction.
 I think ive resolved that all now, but really I was just having trouble deciding if I wanted sandeee to be a game, or a thing.

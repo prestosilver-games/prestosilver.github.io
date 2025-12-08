@@ -1,5 +1,6 @@
 % title: Zig Interfaces
 % date: 2025 06/01
+%url: zig-interfaces
 
 I never really thought about it before but interfaces in zig can be kinda bad sometimes.
 Because the way you make the naive interface most people make in zig its normally reverse ownership, for example IWindow owns the object that implements it.

@@ -1,5 +1,6 @@
 %title: Infinite Progression
 %date: 2024 07/19
+%url: ip-game
 
 The G-Mod of Idle games, this allows for easy modding, in python and JSON. Never worry about finishing your current idle game, because this one never ends!
 

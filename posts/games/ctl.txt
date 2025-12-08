@@ -1,5 +1,6 @@
 %title: Click To Lose
 %date: 2021 05/21
+%url: ctl-game
 
 (This game has a lot of flashing lights, so do not play if you are affected by this)
 

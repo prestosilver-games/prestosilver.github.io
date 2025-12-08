@@ -1,5 +1,6 @@
 %title: Bugz, Bows, & Curses
 %date: 2025 07/19
+%url: bugz-game
 
 Bugz Bows and Curses is a procedurally generated rougelike revolving around completing Collections. You play as an Ant-ipede with a bow, as you go through levels you gain buffs and get stronger, but the stronger you are, the more likely the AI is to run.
 

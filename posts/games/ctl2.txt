@@ -1,5 +1,6 @@
 %title: Click To Lose Minus
 %date: 2022 08/23
+%url: ctl2-game
 
 Click to Lose Minus was a full remake of my first game, It was designed to be less grind.
 

@@ -1,5 +1,6 @@
 %title: Love for wayland
 %date: 2025 06/19
+%url: wayland-love
 
 So ive been rewriting my wayland compositor finally, and I never really thought about it but the design behind wayland's LayerSurface stuff is a really smart way of dealing with what it does.
 For the uninitated, there are 4 layers  (4 mandatory ones in the spec, but you can make more for your own use)

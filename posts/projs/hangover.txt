@@ -1,5 +1,6 @@
 %title: Hangover
 %date: 2022 08/23
+%url: hangover-proj
 
 Hangover is a game engine based on gin. The primary goals of hangover were:
 - Hangover will use OpenGL for graphics.

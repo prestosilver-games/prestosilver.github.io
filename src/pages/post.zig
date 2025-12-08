@@ -11,16 +11,12 @@ const Text = @import("../generators/text.zig");
 const Self = @This();
 
 file_path: []const u8,
-id: usize,
-
-var last_id: usize = 0;
+id: []const u8,
 
 pub fn init(file_path: []const u8) Self {
-    last_id += 1;
-
     return .{
         .file_path = file_path,
-        .id = last_id,
+        .id = "",
     };
 }
 
@@ -144,6 +140,10 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
 
                 if (std.mem.eql(u8, kind, "hide")) {
                     break;
+                }
+
+                if (std.mem.eql(u8, kind, "url")) {
+                    self.id = try dom.allocator.dupe(u8, text);
                 }
 
                 if (std.mem.eql(u8, kind, "date")) {

@@ -1,5 +1,6 @@
 %title: Bamba 3
 %date: 2023 12/09
+%url: bamba3-proj
 
 A remake of my programming language... again.
 

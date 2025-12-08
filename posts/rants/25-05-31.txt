@@ -1,5 +1,6 @@
 %title: Sandeee and zig interfaces
 %date: 2025 05/31
+%url: zig-interfaces-sandeee
 
 looking back at it the archectecture of sandeee really shows I was still learning zig
 There are just so many things in it that you dont do even tho zig can do them, like a multi-composition relationship for example, which while yes its in uml is not a pattern anyone uses and if you use it your making it with other stuff, really weird system.

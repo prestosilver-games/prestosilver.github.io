@@ -1,5 +1,6 @@
 %title: Obfuscation
 %date: 2023 12/09
+%url: obfuscation-comments
 
 Obfuscation often seems like a go to security tool for many companies. With this in mind, I recently did some research to see if obfuscation should even be morally accepted. The results were surprising, even to me.
 

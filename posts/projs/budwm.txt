@@ -1,5 +1,6 @@
 %title: Budwm
 %date: 2022 08/23
+%url: budwm-proj
 
 Budwm is a DWM mod that focuses on containers.
 

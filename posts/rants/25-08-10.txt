@@ -1,5 +1,6 @@
 %title: Nims garbage collector 
 %date: 2025 08/10
+%url: nim-gc
 
 Nims garbage collector just gets really annoying to work with when it comes to things like hooking external functions, like I want lua code thats called in nim to be able to get the engine to make a texture, then populate it or whatever, then eventually unref the pointer once lua frees it, the issue is that freeing a texture is a c function, and might not occur with luas destructor, so I have to hook nims destructor, which according to the docs is possible, but then you try it and aparently only nonpointer objects can hook their destructor, so I have to read even more docs just to find out when the destructor is even called to make sure thats safe, literal nightmare but at this point im so deep in that I might as well leave it and just figure it out later.
 
