@@ -1,7 +1,6 @@
 %title: The contrast of emergent behaviours
 %date: 2025 12/08
 %url: emergent-behaviours
-%hide: true
 
 I recently noticed a fun contrast in emergent behaviours in various programming languages and wanted to write a quick rant about it.
 
