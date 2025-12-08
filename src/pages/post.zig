@@ -141,7 +141,9 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
                 }
 
                 if (std.mem.eql(u8, kind, "url")) {
-                    self.id = try dom.allocator.dupe(u8, text);
+                    // set url
+                    const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{s}.html", .{text});
+                    try html.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "path" }, page_url);
                 }
 
                 if (std.mem.eql(u8, kind, "date")) {
@@ -223,10 +225,6 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         }});
 
         try rem.Dom.mutation.elementAppend(dom, root, .{ .element = paragraph_date }, .Suppress);
-
-        // set url
-        const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{}.html", .{self.id});
-        try html.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "path" }, page_url);
     }
 
     return document;

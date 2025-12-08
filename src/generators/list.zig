@@ -95,7 +95,7 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Element {
                     if (page.id.len == 0)
                         return error.MissingPageId;
 
-                    const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{s}.html", .{page.id});
+                    const page_url = dom.element.?.getAttribute(.{ .prefix = .none, .namespace = .none, .local_name = "path" }) orelse return;
 
                     try util.writePage(dom, try std.fs.cwd().openDir("root", .{}), page_conts);
 
