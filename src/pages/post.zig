@@ -22,11 +22,9 @@ pub fn init(file_path: []const u8) Self {
 
 pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
     const document = try dom.makeDocument();
-    const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{}.html", .{self.id});
 
     const html = try dom.makeElement(.html_html);
     try rem.Dom.mutation.documentAppendElement(dom, document, html, .Suppress);
-    try html.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "path" }, page_url);
 
     {
         const head = try dom.makeElement(.html_head);
@@ -225,6 +223,10 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         }});
 
         try rem.Dom.mutation.elementAppend(dom, root, .{ .element = paragraph_date }, .Suppress);
+
+        // set url
+        const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{}.html", .{self.id});
+        try html.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "path" }, page_url);
     }
 
     return document;
