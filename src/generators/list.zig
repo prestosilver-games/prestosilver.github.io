@@ -92,7 +92,7 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Element {
 
                     const page: PostPage = .init(try std.fmt.allocPrint(dom.allocator, "{s}/{s}", .{ self.folder, item.name }));
                     const page_conts = try page.gen(dom);
-                    if (page.id == "")
+                    if (page.id.len == 0)
                         return error.MissingPageId;
 
                     const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{s}.html", .{page.id});
