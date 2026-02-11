@@ -74,6 +74,12 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
                     .text = @embedFile("about.txt"),
                 },
             },
+            Block(Text){
+                .heading = "Note",
+                .conts = .{
+                    .text = "Don't like the theme of this page? Try pressing SHIFT+T!",
+                },
+            },
             Block(Links){
                 .heading = "Links",
                 .conts = .{ .data = &.{
