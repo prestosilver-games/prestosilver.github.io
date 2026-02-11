@@ -75,7 +75,7 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
                 },
             },
             Block(Text){
-                .heading = "Note",
+                .heading = "HEY!",
                 .conts = .{
                     .text = "Don't like the theme of this page? Try pressing SHIFT+T!",
                 },

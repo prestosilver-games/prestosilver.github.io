@@ -1,5 +1,5 @@
 %title: SandEEE
-%date: 2025 02/11
+%date: 2026 02/11
 %url: sandeee-game
 
 SandEEE is a "not so cutting edge" fantasy desktop with absolutely no accuracy compromises made. 
