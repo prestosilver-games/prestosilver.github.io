@@ -1,0 +1,17 @@
+%title: SandEEE
+%date: 2025 02/11
+%url: sandeee-game
+
+SandEEE is a "not so cutting edge" fantasy desktop with absolutely no accuracy compromises made. 
+
+%head: Features
+
+- Immerse yourself in a desktop simulation that is realistic down to the assembly level.
+- Easily host your in-game web pages and software using the Steam workshop.
+- Use multiple fully rewritable in-game languages, tools, and applications.
+- Many easy to read file formats editable with tools or by hand. Even without knowing how to code, out of the box you have the ability make music, games, art, or just write your latest fanfic.
+- Explore the company lore of the defunct mega corperation behind an abandoned operating system. An operating system that was built for machines that never existed.
+
+%link: Itch=https://prestosilver.itch.io/sandeee
+%link: Steam=https://store.steampowered.com/app/4124360
+%link: Website=https://sandeee.prestosilver.info/
