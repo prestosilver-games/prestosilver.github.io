@@ -85,7 +85,7 @@ pub fn gen(dom: *rem.Dom) !*rem.Dom.Document {
                 .conts = .{ .data = &.{
                     .{ .name = "Linkedin", .path = "https://www.linkedin.com/in/prestosilver/" },
                     .{ .name = "Discord", .path = "https://discord.com/invite/vrVVXktmfV" },
-                    .{ .name = "Youtube", .path = "https://www.youtube.com/channel/UCn3KTSGb3DbbGlS3hYGmsTA" },
+                    .{ .name = "Youtube", .path = "https://www.youtube.com/@prestosilver" },
                     .{ .name = "Itch", .path = "https://prestosilver.itch.io" },
                     .{ .name = "GitHub", .path = "https://github.com/prestosilver" },
                     .{ .name = "Steam", .path = "https://store.steampowered.com/dev/presosilver" },
