@@ -106,7 +106,8 @@ a:hover {
     right: 0;
     bottom: 0;
     border-top-left-radius: var(--border-radius);
-    background-color: var(--background-secondary);
+    background-color: var(--border-primary);
+    color: var(--foreground-primary);
     text-align: right;
     padding: 0.25em;
     margin: 0;
