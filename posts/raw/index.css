@@ -37,6 +37,7 @@
 }
 
 body {
+    transition: 0.3s;
     font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     line-height: 1.5;
     font-size: 1.5rem;
@@ -64,6 +65,7 @@ a, p {
 }
 
 a {
+    transition: 0.3s;
     background-color: var(--background-secondary);
     color: var(--foreground-secondary);
     border: dashed 3px var(--border-secondary);
@@ -72,6 +74,7 @@ a {
 }
 
 a:hover {
+    transition: 0.3s;
     background-color: var(--background-primary);
     color: var(--foreground-primary);
     border: dashed 3px var(--border-primary);
@@ -102,6 +105,7 @@ a:hover {
 }
 
 .post-date {
+    transition: 0.3s;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -114,12 +118,14 @@ a:hover {
 }
 
 .post-title {
+    transition: 0.3s;
     border: var(--border-primary) 0.5rem;
     background-color: var(--background-primary);
     color: var(--foreground-primary);
 }
 
 .post-content {
+    transition: 0.3s;
     border: var(--border-primary) 0.5rem;
     background-color: var(--background);
     color: var(--foreground);
@@ -127,12 +133,14 @@ a:hover {
 }
 
 .block-title {
+    transition: 0.3s;
     border: var(--border-secondary) 0.5rem;
     background-color: var(--background-secondary);
     color: var(--foreground-secondary);
 }
 
 .block-content {
+    transition: 0.3s;
     border: var(--border-secondary) 0.5rem;
     background-color: var(--background);
     color: var(--foreground);
@@ -159,10 +167,12 @@ a:hover {
 }
 
 .post:hover .post-content {
+    transition: 0.3s;
     color: color-mix(in lab, var(--background) 90%, var(--foreground) 10%);
 }
 
 .post:hover .post-content .post-link {
+    transition: 0.3s;
     color: var(--foreground);
     opacity: 1.0;
 }
