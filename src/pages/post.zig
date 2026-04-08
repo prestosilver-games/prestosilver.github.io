@@ -49,6 +49,11 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try rem.Dom.mutation.elementAppend(dom, highlight_js, .{ .cdata = try dom.makeCdata("", .text) }, .Suppress);
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_js }, .Suppress);
 
+        const highlight_zig_js = try dom.makeElement(.html_script);
+        try highlight_zig_js.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "src" }, "/highlightzig.min.js");
+        try rem.Dom.mutation.elementAppend(dom, highlight_zig_js, .{ .cdata = try dom.makeCdata("", .text) }, .Suppress);
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_zig_js }, .Suppress);
+
         const highlight_run = try dom.makeElement(.html_script);
         try rem.Dom.mutation.elementAppend(dom, highlight_run, .{ .cdata = try dom.makeCdata("hljs.highlightAll();", .text) }, .Suppress);
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = highlight_run }, .Suppress);
