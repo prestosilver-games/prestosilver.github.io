@@ -5,38 +5,20 @@
 The planning process for my upcoming website rewrite.
 
 %head: Wait what?
-I recently decided I want to try and split the code of my website into content and framework.
-There are a few reasons but the biggest is I want to remake the repo completely in zig.
-I thought it may be fun to document this process from start to finish.
+I recently decided I want to try and split the code of my website into content and framework. There are a few reasons but the biggest is I want to remake the repo completely in zig. I thought it may be fun to document this process from start to finish.
 
 %head: Whats wrong with what you have
-...Bruh, I cant even put games in my site.
-Also, why not? Huh zig isnt meant for webdev. Yeah I didnt think you had a good reason.
+...Bruh, I cant even put games in my site. Also, why not? Huh zig isnt meant for webdev. Yeah I didnt think you had a good reason.
 
 %head: Hurdles I need to surpass
-Firstoff, currently my website uses a random dom parsing library I found on github to store html.
-I am going to scrap this completely, first off I dont parse any html, but more importantly dont even use this library like at all, not even for emission.
-This also brings up that ugly markup language I use.
-I want to keep the custom format, but ill have to redesign it a little more formally.
+Firstoff, currently my website uses a random dom parsing library I found on github to store html. I am going to scrap this completely, first off I dont parse any html, but more importantly dont even use this library like at all, not even for emission. This also brings up that ugly markup language I use. I want to keep the custom format, but ill have to redesign it a little more formally.
 
-Alright, maybe this is actually doable.
-Another thing I need to worry about, is how am I going to insert wasm into my new generated html through zig.
-My plan for that is to make the framework build a builder executable, this executable will have flags that can print dependencies.
-I can then use zigs build system over that to build/emit those wasm files.
-This will allow all the code to be in one place.
-I could even have a build target for these executables that emits wasm code instead of a main function.
-Maybe even packing all the wasm from my entire site into one binary.
-And keep my wasm inline with the html, pretty nice sounding.
+Alright, maybe this is actually doable. Another thing I need to worry about, is how am I going to insert wasm into my new generated html through zig. My plan for that is to make the framework build a builder executable, this executable will have flags that can print dependencies. I can then use zigs build system over that to build/emit those wasm files. This will allow all the code to be in one place. I could even have a build target for these executables that emits wasm code instead of a main function. Maybe even packing all the wasm from my entire site into one binary. And keep my wasm inline with the html, pretty nice sounding.
 
-Ok thats cool, but now I need to decide how I will extend this later on, because ya know javascript is always getting new "good" features.
-I think if I just have a decent protocol for calling js inside my wasm I should be fine.
-This will also allow me to make things like style sheets in zig, and then have my wasm engine apply it.
+Ok thats cool, but now I need to decide how I will extend this later on, because ya know javascript is always getting new "good" features. I think if I just have a decent protocol for calling js inside my wasm I should be fine. This will also allow me to make things like style sheets in zig, and then have my wasm engine apply it.
 
 %head: OK... about that first hurdle.
-Well honestly its not bad at all, just a basic graph.
-A few things I personally want is optional pretty emission, arbitrary tags through an enum([]const u8), and some form of linking between pages.
-I also wanna try and use arenas for this because it seems like a fun chance to try the pattern.
-I dont think thats too bad, maybe something like this:
+Well honestly its not bad at all, just a basic graph. A few things I personally want is optional pretty emission, arbitrary tags through an enum([]const u8), and some form of linking between pages. I also wanna try and use arenas for this because it seems like a fun chance to try the pattern. I dont think thats too bad, maybe something like this:
 
 %code: zig
 const DomElement = union(Kind) {
@@ -58,8 +40,7 @@ const DomElement = union(Kind) {
 %end: code
 
 %head: Next up, the wasm
-I already partially discussed it, but the plan for wasm is to embed it inside the zig dom.
-I think if I have a wrapper for structs Itll endup pretty nice, maybe something like:
+I already partially discussed it, but the plan for wasm is to embed it inside the zig dom. I think if I have a wrapper for structs Itll endup pretty nice, maybe something like:
 
 %code: zig
 const DomCode = struct {
@@ -78,4 +59,5 @@ const DomCode = struct {
 
 Ill have to figure out how to force a function to export, but other than that it should be straight forward.
 
+%head: To be continued
 Anyways thats all the rough planning out of the way (for now), I guess just stick here til I spec out the actual functions in part 2.
