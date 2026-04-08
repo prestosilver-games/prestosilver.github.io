@@ -104,7 +104,8 @@ a:hover {
 .post-date {
     position: absolute;
     right: 0;
-    background-color: var(--background-primary);
+    bottom: 0;
+    background-color: var(--background-secondary);
     text-align: right;
     padding: 0.25em;
     margin: 0;
