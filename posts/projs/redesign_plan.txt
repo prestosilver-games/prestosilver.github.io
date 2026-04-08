@@ -2,9 +2,6 @@
 %date: 2026 04/07
 %url: website-redesign-1
 
-The planning process for my upcoming website rewrite.
-
-%head: Wait what?
 I recently decided I want to try and split the code of my website into content and framework. There are a few reasons but the biggest is I want to remake the repo completely in zig. I thought it may be fun to document this process from start to finish.
 
 %head: Whats wrong with what you have

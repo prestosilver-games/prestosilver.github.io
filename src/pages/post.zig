@@ -203,6 +203,7 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
                 } else if (text.len != 0) {
                     if (do_split) {
                         try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = try dom.makeElement(.html_br) }, .Suppress);
+                        try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = try dom.makeElement(.html_br) }, .Suppress);
                         do_split = false;
                     }
 
