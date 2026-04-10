@@ -1,0 +1,59 @@
+%title: Planning a wasm interface (website redesign part2)
+%date: 2026 04/10
+%url: website-redesign-2
+
+This tuesday I started talking about a website resdesign, I am going to continue talking about that, and hopefully get all those plans ready.
+
+%head: The page structure
+
+So right now I have something like this for making pages:
+
+%code: zig
+try util.genPage(dom, root, .{
+    Block(Text){
+        .heading = "About",
+        .conts = .{
+            .text = @embedFile("about.txt"),
+        },
+    },
+    Split(Block(List)){
+        .class = "split",
+        .conts = &.{
+            Block(List){
+                .heading = "Games",
+                .conts = .{
+                    .folder = "posts/games",
+                },
+            },
+        },
+    },
+});
+```
+%end: code
+
+I really like this, but I will need to template stuff out a bit more, since I manually create page heads. But if I do something similar, and have sub interfaces for head and body sections I can get quite far cleanly. I also want to template out text everywhere for consistency.
+
+%head: Code interface
+
+For code I will need a way for gen code to emit a js call to the wasm. Maybe something like this:
+%code: zig
+Block(Code(struct {
+  pub fn main(root: DomElement) {
+      // If I for example want a canvas I could call a
+      const canvas = DomElemet.makeElement("canvas");
+      // Then I could add tags
+      canvas.addMeta("class", "my_canvas");
+      // importantly this uses the same syntax as the main class.
+      // ...
+  }
+})){
+  .heading = "Test code",
+  .{},
+},
+%end: code
+
+%head: To be continued
+I think that puts this project in a good spot, I will problaby be updating this post a couple times in the next couple days before I start Part 3, where I will start my base implementation.
+
+%link: First Part=https://prestosilver.info/posts/website-redesign-1.html
+%link: Previous Part=https://prestosilver.info/posts/website-redesign-1.html

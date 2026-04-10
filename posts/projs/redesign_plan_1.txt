@@ -58,3 +58,6 @@ Ill have to figure out how to force a function to export, but other than that it
 
 %head: To be continued
 Anyways thats all the rough planning out of the way (for now), I guess just stick here til I spec out the actual functions in part 2.
+
+%link: First Part=https://prestosilver.info/posts/website-redesign-1.html
+%link: Next Part=https://prestosilver.info/posts/website-redesign-2.html
