@@ -95,7 +95,7 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try paragraph_conts.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "class" }, "block-content");
 
         const paragraph_date = try dom.makeElement(.html_p);
-        try paragraph_date.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "class" }, "post-date");
+        try paragraph_date.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "class" }, "post-date-post");
 
         try rem.Dom.mutation.elementAppend(dom, block, .{ .element = paragraph_title }, .Suppress);
         try rem.Dom.mutation.elementAppend(dom, block, .{ .element = paragraph_conts }, .Suppress);
