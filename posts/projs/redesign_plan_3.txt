@@ -80,15 +80,15 @@ const web = @import("web_library");
 const main = web.mainFn(@This());
 
 // This function runs with the generator, it emits the html
-pub fn page(root: web.Element) void {
-    const desc = root.addChildren(&.{
+pub fn page(root: web.Element) !void {
+    try root.addChildren(&.{
         .tag("h1", .{.text("This is a test page.")}),
         .evalTag("p", .runtime, struct {
             // This could also be an @import()
 
-            pub fn page(root: web.Element) void {
+            pub fn page(root: web.Element) !void {
                 const browser = web.getBrowser();
-                root.addChildren(&.{
+                try root.addChildren(&.{
                     .text("Hello from "),
                     .text(browser),
                     .text("!"),
@@ -107,8 +107,8 @@ pub fn page(root: web.Element) void {
             // This could also be an @import()
             // might be useful for templating when its not runtime
             
-            pub fn page(root: web.Element) void {
-                root.addChildren(&.{
+            pub fn page(root: web.Element) !void {
+                try root.addChildren(&.{
                     .text("How are you today"),
                 });
             }
