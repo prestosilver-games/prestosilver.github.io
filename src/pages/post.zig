@@ -26,6 +26,8 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
     const html = try dom.makeElement(.html_html);
     try rem.Dom.mutation.documentAppendElement(dom, document, html, .Suppress);
 
+    const head_og_url_meta = try dom.makeElement(.html_meta);
+    const head_tw_url_meta = try dom.makeElement(.html_meta);
     {
         const head = try dom.makeElement(.html_head);
 
@@ -43,11 +45,9 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try head_og_type_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "website");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_type_meta }, .Suppress);
 
-        const head_og_url_meta = try dom.makeElement(.html_meta);
         try head_og_url_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:url");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_url_meta }, .Suppress);
 
-        const head_tw_url_meta = try dom.makeElement(.html_meta);
         try head_tw_url_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "twitter:url");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_url_meta }, .Suppress);
 
