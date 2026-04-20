@@ -28,6 +28,10 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
 
     const head_og_url_meta = try dom.makeElement(.html_meta);
     const head_tw_url_meta = try dom.makeElement(.html_meta);
+
+    const head_description_meta = try dom.makeElement(.html_meta);
+    const head_og_description_meta = try dom.makeElement(.html_meta);
+    const head_tw_description_meta = try dom.makeElement(.html_meta);
     {
         const head = try dom.makeElement(.html_head);
 
@@ -61,19 +65,13 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try head_tw_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_title_meta }, .Suppress);
 
-        const head_og_description_meta = try dom.makeElement(.html_meta);
         try head_og_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:description");
-        try head_og_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "page-summary");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_description_meta }, .Suppress);
 
-        const head_tw_description_meta = try dom.makeElement(.html_meta);
         try head_tw_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "twitter:description");
-        try head_tw_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "page-summary");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_description_meta }, .Suppress);
 
-        const head_description_meta = try dom.makeElement(.html_meta);
         try head_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "name" }, "description");
-        try head_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "page-summary");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_description_meta }, .Suppress);
 
         const head_css = try dom.makeElement(.html_link);
@@ -151,6 +149,7 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         var can_split = false;
         var do_split = false;
         var split = std.mem.splitScalar(u8, conts, '\n');
+        var first_line = false;
         while (split.next()) |line| {
             if (std.mem.startsWith(u8, line, "%")) {
                 const colon_index = std.mem.indexOf(u8, line, ":") orelse continue;
@@ -250,6 +249,16 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
                     do_split = true;
                     can_split = false;
                 } else if (text.len != 0) {
+                    if (first_line == false) {
+                        const dot_index = std.mem.indexOf(u8, text, ".") orelse text.len - 1;
+
+                        first_line = true;
+
+                        try head_og_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, text[0..dot_index]);
+                        try head_tw_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, text[0..dot_index]);
+                        try head_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, text[0..dot_index]);
+                    }
+
                     if (do_split) {
                         try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = try dom.makeElement(.html_br) }, .Suppress);
                         try rem.Dom.mutation.elementAppend(dom, paragraph_conts, .{ .element = try dom.makeElement(.html_br) }, .Suppress);
