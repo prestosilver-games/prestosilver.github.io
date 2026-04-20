@@ -84,7 +84,7 @@ const main = web.mainFn(@This());
 pub fn page(root: web.Element) !void {
     try root.addChildren(&.{
         .tag("h1", .{.text("This is a test page.")}),
-        .evalTag("p", .runtime, struct {
+        .gen("p", .runtime, struct {
             // This could also be an @import()
 
             pub fn page(root: web.Element) !void {
@@ -106,7 +106,7 @@ pub fn page(root: web.Element) !void {
                 web.log("user clicked!", .{});
             }
         }),
-        .evalTag("p", .generated, struct {
+        .gen("p", .generated, struct {
             // This could also be an @import()
             // might be useful for templating when its not runtime
             
