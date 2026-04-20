@@ -96,7 +96,7 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Element {
                     const page_url = page_conts.element.?.getAttribute(.{ .prefix = .none, .namespace = .none, .local_name = "path" }) orelse
                         return error.MissingPageUrl;
 
-                    try util.writePage(dom, try std.fs.cwd().openDir("root", .{}), page_conts);
+                    try util.writePage(dom, try std.fs.cwd().openDir("zig-out", .{}), page_conts);
 
                     try link.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "href" }, page_url);
                 }

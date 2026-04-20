@@ -13,14 +13,14 @@ jobs:
           zig-version: 0.14.0
       - name: Generate Site
         run: |
-          mkdir -pv root/posts
-          cp posts/raw/* root/
-          zig build run > root/sitemap.txt
+          mkdir -pv zig-out/posts
+          cp posts/raw/* zig-out/
+          zig build generate > zig-out/sitemap.txt
       - name: Upload to gh pages
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
-          path: root
+          path: zig-out
 
   # Deployment job
   deploy:

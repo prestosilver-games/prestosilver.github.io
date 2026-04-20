@@ -10,7 +10,7 @@ pub fn main() !void {
     var dom = rem.Dom{ .allocator = allocator };
     defer dom.deinit();
 
-    const root = try std.fs.cwd().openDir("root", .{});
+    const root = try std.fs.cwd().openDir("zig-out", .{});
 
     const home_page = try home.gen(&dom);
 
