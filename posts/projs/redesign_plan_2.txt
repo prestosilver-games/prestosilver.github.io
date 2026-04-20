@@ -57,3 +57,4 @@ I think that puts this project in a good spot, I will problaby be updating this 
 
 %link: First Part=https://prestosilver.info/posts/website-redesign-1.html
 %link: Previous Part=https://prestosilver.info/posts/website-redesign-1.html
+%link: Next Part=https://prestosilver.info/posts/website-redesign-3.html
