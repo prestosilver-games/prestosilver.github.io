@@ -38,6 +38,39 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try head_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_title_meta }, .Suppress);
 
+        const head_og_type_meta = try dom.makeElement(.html_meta);
+        try head_og_type_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:type");
+        try head_og_type_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "website");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_type_meta }, .Suppress);
+
+        const head_og_url_meta = try dom.makeElement(.html_meta);
+        try head_og_url_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:url");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_url_meta }, .Suppress);
+
+        const head_tw_url_meta = try dom.makeElement(.html_meta);
+        try head_tw_url_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "twitter:url");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_url_meta }, .Suppress);
+
+        const head_og_title_meta = try dom.makeElement(.html_meta);
+        try head_og_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:title");
+        try head_og_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_title_meta }, .Suppress);
+
+        const head_tw_title_meta = try dom.makeElement(.html_meta);
+        try head_tw_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "twitter:title");
+        try head_tw_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_title_meta }, .Suppress);
+
+        const head_og_description_meta = try dom.makeElement(.html_meta);
+        try head_og_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:description");
+        try head_og_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "page-summary");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_description_meta }, .Suppress);
+
+        const head_tw_description_meta = try dom.makeElement(.html_meta);
+        try head_tw_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "twitter:description");
+        try head_tw_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "page-summary");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_description_meta }, .Suppress);
+
         const head_description_meta = try dom.makeElement(.html_meta);
         try head_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "name" }, "description");
         try head_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "page-summary");
@@ -158,6 +191,8 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
                     // set url
                     const page_url = try std.fmt.allocPrint(dom.allocator, "posts/{s}.html", .{text});
                     try html.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "path" }, page_url);
+                    try head_og_url_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, page_url);
+                    try head_tw_url_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, page_url);
                 }
 
                 if (std.mem.eql(u8, kind, "date")) {
