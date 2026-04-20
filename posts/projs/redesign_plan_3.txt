@@ -1,4 +1,4 @@
-%title: Planning a html/dom writer (website redesign part3)
+%title: Planning a html/dom writer (website redesign part 3)
 %date: 2026 04/20
 %url: website-redesign-3
 

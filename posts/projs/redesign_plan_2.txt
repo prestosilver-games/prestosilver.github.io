@@ -1,4 +1,4 @@
-%title: Planning a wasm interface (website redesign part2)
+%title: Planning a wasm interface (website redesign part 2)
 %date: 2026 04/10
 %url: website-redesign-2
 

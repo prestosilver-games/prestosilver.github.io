@@ -1,4 +1,4 @@
-%title: Planning a web framework (website redesign part1)
+%title: Planning a web framework (website redesign part 1)
 %date: 2026 04/07
 %url: website-redesign-1
 
