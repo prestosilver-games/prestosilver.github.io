@@ -31,8 +31,17 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
 
         const head_title = try dom.makeElement(.html_title);
         try rem.Dom.mutation.elementAppend(dom, head_title, .{ .cdata = try dom.makeCdata("Prestosilver", .text) }, .Suppress);
-
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_title }, .Suppress);
+
+        const head_title_meta = try dom.makeElement(.html_meta);
+        try head_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "name" }, "title");
+        try head_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_title_meta }, .Suppress);
+
+        const head_description_meta = try dom.makeElement(.html_meta);
+        try head_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "name" }, "description");
+        try head_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "page-summary");
+        try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_description_meta }, .Suppress);
 
         const head_css = try dom.makeElement(.html_link);
         try head_css.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "rel" }, "stylesheet");
