@@ -66,7 +66,8 @@ const Generator = struct {
     pub fn init(base: anytype) Generator;
 
     // Basic zig format function, outputs in html.
-    // This will not emit the wasm in generation builds, rather it will emit the call.
+    // This will not emit the wasm in generation builds
+    // rather it will emit the call.
     pub fn format(...) void;
 };
 %end: code
@@ -94,8 +95,10 @@ pub fn page(root: web.Element) !void {
                     .text("!"),
                 });
 
-                // This is ran when a page is loaded, so be sure to keep it breif. It is especially useful for registering callbacks
-                // web.addCallback will have to emit javascript add event on wrapper for a wasm call
+                // This is ran when a page is loaded, so be sure to keep it
+                // breif. It is especially useful for registering callbacks
+                // web.addCallback will have to emit javascript add event
+                // on wrapper for a wasm call
                 web.addCallback(.on_click, &onClick);
             }
 
