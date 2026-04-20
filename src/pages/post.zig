@@ -26,6 +26,10 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
     const html = try dom.makeElement(.html_html);
     try rem.Dom.mutation.documentAppendElement(dom, document, html, .Suppress);
 
+    const head_title_meta = try dom.makeElement(.html_meta);
+    const head_og_title_meta = try dom.makeElement(.html_meta);
+    const head_tw_title_meta = try dom.makeElement(.html_meta);
+
     const head_og_url_meta = try dom.makeElement(.html_meta);
     const head_tw_url_meta = try dom.makeElement(.html_meta);
 
@@ -39,9 +43,7 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try rem.Dom.mutation.elementAppend(dom, head_title, .{ .cdata = try dom.makeCdata("Prestosilver", .text) }, .Suppress);
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_title }, .Suppress);
 
-        const head_title_meta = try dom.makeElement(.html_meta);
         try head_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "name" }, "title");
-        try head_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_title_meta }, .Suppress);
 
         const head_og_type_meta = try dom.makeElement(.html_meta);
@@ -55,14 +57,10 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
         try head_tw_url_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "twitter:url");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_url_meta }, .Suppress);
 
-        const head_og_title_meta = try dom.makeElement(.html_meta);
         try head_og_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:title");
-        try head_og_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_og_title_meta }, .Suppress);
 
-        const head_tw_title_meta = try dom.makeElement(.html_meta);
         try head_tw_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "twitter:title");
-        try head_tw_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, "Prestosilver");
         try rem.Dom.mutation.elementAppend(dom, head, .{ .element = head_tw_title_meta }, .Suppress);
 
         try head_og_description_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "property" }, "og:description");
@@ -156,6 +154,10 @@ pub fn gen(self: *const Self, dom: *rem.Dom) !*rem.Dom.Document {
                 const kind = std.mem.trim(u8, line[1..colon_index], &std.ascii.whitespace);
                 const text = std.mem.trim(u8, line[(colon_index + 1)..], &std.ascii.whitespace);
                 if (std.mem.eql(u8, kind, "title")) {
+                    try head_og_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, text);
+                    try head_tw_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, text);
+                    try head_title_meta.appendAttribute(dom.allocator, .{ .prefix = .none, .namespace = .none, .local_name = "content" }, text);
+                    
                     try rem.Dom.mutation.elementAppend(dom, title, .{ .cdata = try dom.makeCdata(text, .text) }, .Suppress);
                 }
 
