@@ -59,7 +59,7 @@ pub fn onLoad(self: *Example, root: *web.Unit) !void {
         server,
 
         // templates if it wasnt obvious from the previous post, can be made with @import
-        web.Script(.runtime, @import("footer.zig"))(.{}),
+        web.Script(.generated, @import("footer.zig"))(.{}),
     });
 }
 %end: code
