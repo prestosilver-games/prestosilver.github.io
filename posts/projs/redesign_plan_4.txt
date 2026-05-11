@@ -24,11 +24,13 @@ All these changes will look something like this:
 const web = @import("web_framework");
 pub const main = web.mainFn(@This());
 
+const Index = @This();
+
 pub const Example = struct {
     text: []const u8,
     server: *Unit,
     
-    pub fn onLoad(self: *Example, root: *web.Unit) !void {
+    pub fn onLoad(root: *web.Unit, self: Example) !void {
         const serverText = self.server.call("getHello", .{});
 
         try root.addChildren(.{
@@ -39,14 +41,14 @@ pub const Example = struct {
 };
 
 pub const Server = struct {
-    pub fn getHello(root: *web.Unit) []const u8 {
+    pub fn getHello(_: *web.Unit, _: Server) []const u8 {
         return "Hello World!";
     }
     
     // onload should not be required
 };
 
-pub fn onLoad(self: *Example, root: *web.Unit) !void {
+pub fn onLoad(root: *web.Unit, _: Index) !void {
     // Since servers are a unit, you can @import it and keep the code seperate.
     const server = web.Script(.server, Server)(.{});
 
