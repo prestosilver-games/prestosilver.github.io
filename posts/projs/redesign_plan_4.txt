@@ -1,4 +1,4 @@
-%title: Adapting a spec to the prototype. (website redesign part 3)
+%title: Adapting a spec after a prototype. (website redesign part 4)
 %date: 2026 05/11
 %url: website-redesign-4
 
