@@ -1,0 +1,68 @@
+%title: Adapting a spec to the prototype. (website redesign part 3)
+%date: 2026 05/11
+%url: website-redesign-4
+
+Now that I've written a simple prototype for this framework, I wanted to make some adjustments based off how it went.
+
+%head: Fix some wording
+
+Calling the entry function 'page' felt a bit clunky, I am going to rename this to onLoad. This will be to enforce the similarity between client and generation time in the framework. I also want to rename elements to Units, the reasoning for this will be more obvious later, but in short I want to abstract this system completly away from html, js, and css.
+
+I also am going to move the union part of dom elemenets to a child, this will allow me to call my dom initializers .tag, .gen, .text etc. I will also be moving the addChildren array to comptime similar to the std.fmt.Format api, so I can throw things like strings into here and have it work like .text().
+
+%head: The elephant in the room
+
+Now that all the simple things have been brought up, there was a pretty big problem with the current spec. Right now when you use a generator in your page function the wasm backend will not emit the function. This is due to zigs lazy eval. I will need some way to indicate depenedent generators, the plan is to remake generator to be completly comptime.
+
+I also noticed that this framework can be expanded past generation and clients. This in mind, I will expand the spec a bit to allow for that.
+
+%head: A new template
+
+All these changes will look something like this:
+
+%code: zig
+const web = @import("web_framework");
+pub const main = web.mainFn(@This());
+
+pub const Example = struct {
+    text: []const u8,
+    server: *Unit,
+    
+    pub fn onLoad(self: *Example, root: *web.Unit) !void {
+        const serverText = self.server.call("getHello", .{});
+
+        try root.addChildren(.{
+            .tag("p", .{self.text}),
+            .tag("p", .{"server says: ", serverText}),
+        });
+    }
+};
+
+pub const Server = struct {
+    pub fn getHello(root: *web.Unit) []const u8 {
+        return "Hello World!";
+    }
+    
+    // onload should not be required
+};
+
+pub fn onLoad(self: *Example, root: *web.Unit) !void {
+    // Since servers are a unit, you can @import it and keep the code seperate.
+    const server = web.Script(.server, Server)(.{});
+
+    try root.addChildren(.{
+        .tag("h1", .{"Example of the new api"}),
+        web.Script(.client, Example)(.{
+            .text = "Example Template",
+            .server = server,
+        }),
+        server,
+
+        // templates if it wasnt obvious from the previous post, can be templated
+        web.Script(.runtime, @import("footer.zig"))(.{}),
+    });
+}
+%end: code
+
+%link: First Part=https://prestosilver.info/posts/website-redesign-1.html
+%link: Previous Part=https://prestosilver.info/posts/website-redesign-3.html

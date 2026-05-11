@@ -125,3 +125,4 @@ Now that I have a full prototype for a first page im in a really good place to s
 
 %link: First Part=https://prestosilver.info/posts/website-redesign-1.html
 %link: Previous Part=https://prestosilver.info/posts/website-redesign-2.html
+%link: Next Part=https://prestosilver.info/posts/website-redesign-4.html
