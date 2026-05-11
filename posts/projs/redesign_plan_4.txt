@@ -8,7 +8,7 @@ Now that I've written a simple prototype for this framework, I wanted to make so
 
 Calling the entry function 'page' felt a bit clunky, I am going to rename this to onLoad. This will be to enforce the similarity between client and generation time in the framework. I also want to rename elements to Units, the reasoning for this will be more obvious later, but in short I want to abstract this system completly away from html, js, and css.
 
-I also am going to move the union part of dom elemenets to a child, this will allow me to call my dom initializers .tag, .gen, .text etc. I will also be moving the addChildren array to comptime similar to the std.fmt.Format api, so I can throw things like strings into here and have it work like .text().
+I will also be moving the addChildren array to be a comptime tuple similar to the std.fmt.Format api, so I can throw things like strings into here and have it work like .text(). And also allow expanding without needing the union.
 
 %head: The elephant in the room
 
@@ -32,8 +32,8 @@ pub const Example = struct {
         const serverText = self.server.call("getHello", .{});
 
         try root.addChildren(.{
-            .tag("p", .{self.text}),
-            .tag("p", .{"server says: ", serverText}),
+            web.Tag("p", .{self.text}),
+            web.Tag("p", .{"server says: ", serverText}),
         });
     }
 };
@@ -51,14 +51,14 @@ pub fn onLoad(self: *Example, root: *web.Unit) !void {
     const server = web.Script(.server, Server)(.{});
 
     try root.addChildren(.{
-        .tag("h1", .{"Example of the new api"}),
+        web.Tag("h1", .{"Example of the new api"}),
         web.Script(.client, Example)(.{
             .text = "Example Template",
             .server = server,
         }),
         server,
 
-        // templates if it wasnt obvious from the previous post, can be templated
+        // templates if it wasnt obvious from the previous post, can be made with @import
         web.Script(.runtime, @import("footer.zig"))(.{}),
     });
 }
