@@ -87,5 +87,88 @@ p.auto-0 {
 }
 %end: code
 
+%head: ok but children?
+In order to do child tags, you can use '.unit' rather than '.text'
+
+%code: zig
+const web = @import("web_framework");
+pub const main = web.mainFn(@This());
+
+const Index = @This();
+
+const divStyle = web.style(.division);
+const pStyle = web.style(.paragraph);
+
+pub fn onLoad(root: *web.Unit, _: Index) !void {
+    try root.addChildren(.{
+        divStyle.unit(.{
+            pStyle.text("Hello World!"),
+            pBoldStyle.text("This text is bold"),
+            "Raw text outside a tag",
+        }),
+        pStyle.text("Outside the div!"),
+    });
+}
+%end: code
+
+%head: Ok, one last example?
+
+Here is what a section of my current page would look like
+
+%code: zig
+const web = @import("web_framework");
+
+// This is a template for a block of text with a heading.
+
+const Block = @This();
+
+var border_radius: web.Size = .em(1);
+
+const block = web.style(.division).child(.{
+    .margin = .all(.em(1)),
+    .padding = .all(.em(0)),
+    .border_radius = .all(border_radius),
+});
+
+const blockTitle = web.style(.span).child(.{
+    .transition = .seconds(0.3),
+    .margin = .all(0),
+    .padding = .all(0),
+    .text_align = .center,
+    .border_radius = .top(border_radius),
+    .border = .all(.solid),
+    .font_size = .em(1.25),
+    .display = .block,
+});
+
+const blockContent = web.style(.division).child(.{
+    .transition = .seconds(0.3),
+    .border_width = .{
+        .right = .rem(0.5),
+        .bottom = .rem(0.5),
+        .left = .rem(0.5),
+    },
+    .border = .all(.solid),
+    .border_radius = .bottom(border_radius),
+    .display = .block,
+    .padding = .all(.em(0.5)),
+    .overflow = .all(.hidden),
+});
+
+title: []const u8,
+content: []web.Unit,
+
+pub fn onLoad(root: *web.Unit, self: Block) !void {
+    try root.addChildren(.{
+        block.unit(.{
+            blockTitle.text(self.title),
+            // note here, unit takes in anytype which works
+            // with an array of preinit units.
+            blockContent.unit(self.content),
+        }),
+    });
+}
+%end: code
+
 %link: First Part=https://prestosilver.info/posts/website-redesign-1.html
 %link: Previous Part=https://prestosilver.info/posts/website-redesign-4.html
