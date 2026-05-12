@@ -70,3 +70,4 @@ Tune in next time for some amazing style sheets 😉.
 
 %link: First Part=https://prestosilver.info/posts/website-redesign-1.html
 %link: Previous Part=https://prestosilver.info/posts/website-redesign-3.html
+%link: Next Part=https://prestosilver.info/posts/website-redesign-5.html

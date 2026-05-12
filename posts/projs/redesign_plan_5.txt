@@ -1,0 +1,93 @@
+%title: Doing away with HTML
+%date: 2026 05/12
+%url: website-redesign-5
+
+I hate the artifacts HTML has been leaving in the framework, and the framework needs some styling support, so lets hit two birds with one stone and abstract the tags with the styles.
+
+%head: What??!
+
+I was thinking that the framework could emulate how microsoft words styles work, where you have some predefined parent style and then other styles can inherit and override.
+
+%head: Oh, can you give an Example
+
+Sure, the biggest thing with this is that my "root" styles are going to be tags on the implementation side. This means that html will not be relavant to the framework. Take a look at this:
+
+%code: zig
+const web = @import("web_framework");
+pub const main = web.mainFn(@This());
+
+const Index = @This();
+
+const PStyle = web.rootStyle(.paragraph);
+const PBoldStyle = PStyle.override("bold", .{
+    .bold = true,
+});
+
+pub fn onLoad(root: *web.Unit, _: Index) !void {
+    try root.addChildren(.{
+        PStyle.text("Hello World!"),
+        PBoldStyle.text("This text is bold"),
+        "Raw text outside a tag",
+    });
+}
+%end: code
+
+Now thats some nice looking zig, lets take a look at what css it should emit:
+%code: css
+p {}
+
+p.bold {
+    font-weight: bold;
+}
+%end: code
+
+And the html:
+%code: html
+<html>
+    <p>Hello World!</p>
+    <p class="bold">This text is bold</p>
+    Raw text outside a tag
+</html>
+%end: code
+
+%head: What about overridng the base styles
+
+Well, if you want to do that just call '.override', this can be done at either clident time, or generation time, but not servertime. 
+
+%code: zig
+const web = @import("web_framework");
+pub const main = web.mainFn(@This());
+
+const Index = @This();
+
+const PStyle = web.rootStyle(.paragraph);
+const PBoldStyle = PStyle.override("bold", .{
+    .bold = true,
+});
+
+pub fn onLoad(root: *web.Unit, _: Index) !void {
+    PStyle.override(.{
+        .size = .em(2),
+    });
+
+    try root.addChildren(.{
+        PStyle.text("Hello World!"),
+        PBoldStyle.text("This text is bold"),
+        "Raw text outside a tag",
+    });
+}
+%end: code
+
+This will make the css emit as this:
+%code: css
+p {
+    font-size: 2em;
+}
+
+p.bold {
+    font-weight: bold;
+}
+%end: code
+
+%link: First Part=https://prestosilver.info/posts/website-redesign-1.html
+%link: Previous Part=https://prestosilver.info/posts/website-redesign-4.html
