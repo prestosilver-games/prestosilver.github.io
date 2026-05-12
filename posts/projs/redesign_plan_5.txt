@@ -66,9 +66,7 @@ const pBoldStyle = pStyle.child(.{
 });
 
 pub fn onLoad(root: *web.Unit, _: Index) !void {
-    pStyle.override(.{
-        .size = .em(2),
-    });
+    pStyle.set(.{ .size = .em(2) });
 
     try root.addChildren(.{
         pStyle.text("Hello World!"),
