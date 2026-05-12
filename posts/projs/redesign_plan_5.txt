@@ -43,11 +43,11 @@ p.bold {
 
 And the html:
 %code: html
-<html>
-    <p>Hello World!</p>
-    <p class="bold">This text is bold</p>
+&lt;html&gt;
+    &lt;p&gt;Hello World!&lt;/p&gt;
+    &lt;p class=&quot;bold&quot;&gt;This text is bold&lt;/p&gt;
     Raw text outside a tag
-</html>
+&lt;/html&gt;
 %end: code
 
 %head: What about overridng the base styles
