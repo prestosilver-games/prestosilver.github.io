@@ -18,15 +18,15 @@ pub const main = web.mainFn(@This());
 
 const Index = @This();
 
-const PStyle = web.rootStyle(.paragraph);
-const PBoldStyle = PStyle.childWith("bold", .{
+const pStyle = web.style(.paragraph);
+const pBoldStyle = pStyle.child(.{
     .bold = true,
 });
 
 pub fn onLoad(root: *web.Unit, _: Index) !void {
     try root.addChildren(.{
-        PStyle.text("Hello World!"),
-        PBoldStyle.text("This text is bold"),
+        pStyle.text("Hello World!"),
+        pBoldStyle.text("This text is bold"),
         "Raw text outside a tag",
     });
 }
@@ -36,7 +36,7 @@ Now thats some nice looking zig, lets take a look at what css it should emit:
 %code: css
 p {}
 
-p.bold {
+p.auto-0 {
     font-weight: bold;
 }
 %end: code
@@ -45,7 +45,7 @@ And the html:
 %code: html
 &lt;html&gt;
     &lt;p&gt;Hello World!&lt;/p&gt;
-    &lt;p class=&quot;bold&quot;&gt;This text is bold&lt;/p&gt;
+    &lt;p class=&quot;auto-0&quot;&gt;This text is bold&lt;/p&gt;
     Raw text outside a tag
 &lt;/html&gt;
 %end: code
@@ -60,19 +60,19 @@ pub const main = web.mainFn(@This());
 
 const Index = @This();
 
-const PStyle = web.rootStyle(.paragraph);
-const PBoldStyle = PStyle.childWith("bold", .{
+const pStyle = web.style(.paragraph);
+const pBoldStyle = pStyle.child(.{
     .bold = true,
 });
 
 pub fn onLoad(root: *web.Unit, _: Index) !void {
-    PStyle.override(.{
+    pStyle.override(.{
         .size = .em(2),
     });
 
     try root.addChildren(.{
-        PStyle.text("Hello World!"),
-        PBoldStyle.text("This text is bold"),
+        pStyle.text("Hello World!"),
+        pBoldStyle.text("This text is bold"),
         "Raw text outside a tag",
     });
 }
@@ -84,7 +84,7 @@ p {
     font-size: 2em;
 }
 
-p.bold {
+p.auto-0 {
     font-weight: bold;
 }
 %end: code
