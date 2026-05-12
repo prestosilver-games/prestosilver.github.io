@@ -98,6 +98,7 @@ const Index = @This();
 
 const divStyle = web.style(.division);
 const pStyle = web.style(.paragraph);
+const pBoldStyle = pStyle.child(.{ .bold = true });
 
 pub fn onLoad(root: *web.Unit, _: Index) !void {
     try root.addChildren(.{
