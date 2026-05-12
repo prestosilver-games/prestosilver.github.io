@@ -52,7 +52,7 @@ And the html:
 
 %head: What about overridng the base styles
 
-Well, if you want to do that just call '.override', this can be done at either clident time, or generation time, but not servertime. 
+Well, if you want to do that just call '.set', this can be done at either client time, or generation time, but not servertime. 
 
 %code: zig
 const web = @import("web_framework");
