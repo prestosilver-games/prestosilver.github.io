@@ -19,7 +19,7 @@ pub const main = web.mainFn(@This());
 const Index = @This();
 
 const PStyle = web.rootStyle(.paragraph);
-const PBoldStyle = PStyle.override("bold", .{
+const PBoldStyle = PStyle.childWith("bold", .{
     .bold = true,
 });
 
@@ -61,7 +61,7 @@ pub const main = web.mainFn(@This());
 const Index = @This();
 
 const PStyle = web.rootStyle(.paragraph);
-const PBoldStyle = PStyle.override("bold", .{
+const PBoldStyle = PStyle.childWith("bold", .{
     .bold = true,
 });
 
