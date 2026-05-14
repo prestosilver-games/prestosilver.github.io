@@ -1,0 +1,25 @@
+%title: Addign javascript where it shouldnt be.
+%date: 2026 05/14
+%url: website-redesign-6
+
+web devs are in love with javascript, if I want to make this shitpost framework "marketable" I will need to work around this. The plan is to allow a user to embed some javascript code thatll emit as a exported function inside their html, and export a function to call it in zig. This will allow users to extend functionality with minimal friction.
+
+%head: What it'll look like
+
+%code: zig
+const web = @import("web_framework");
+const consoleLog = web.function(struct {a: []const u8}, void,
+  \\ console.log(a)
+);
+
+const Self = @This();
+
+pub fn onLoad(root: *web.Unit, self: Self) !void {
+  consoleLog("Hello World!");
+}
+%end: code
+
+I think this finally finishes covering everything the framework will need for prototype 2. I'll be back once that is done!
+
+%link: First Part=https://prestosilver.info/posts/website-redesign-1.html
+%link: Previous Part=https://prestosilver.info/posts/website-redesign-5.html

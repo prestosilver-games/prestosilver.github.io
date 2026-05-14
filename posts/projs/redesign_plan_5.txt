@@ -173,3 +173,4 @@ pub fn onLoad(root: *web.Unit, self: Block) !void {
 
 %link: First Part=https://prestosilver.info/posts/website-redesign-1.html
 %link: Previous Part=https://prestosilver.info/posts/website-redesign-4.html
+%link: Next Part=https://prestosilver.info/posts/website-redesign-6.html
