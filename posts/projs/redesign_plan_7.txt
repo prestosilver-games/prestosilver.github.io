@@ -7,17 +7,17 @@ Ok so I finished prototype 2, this stupid idea is actually working? There was ve
 %head: The hacks
 
 I ended up switching my "x-time" naming to passes, so currently there is a client pass, server pass, generation pass, and script pass. This was so I can run over generation multiple times, and emit the js into a file. I also made my wasm engine export to a "index.js" file. However I may also include a style pass. The framework also lazily includes styles in its sheet avoiding unused and empty ones, though I will likely have to add some verification so I can avoid conflicting styles.
-
-I also combined addChild and addChildren, zig will just check if the input is a tuple and treat it like addChildren used to.
+I also combined addChild and addChildren into just an add, zig will just check if the input is a tuple and treat it like addChildren used to.
 
 %head: Whats next
 
 
-First off I really want to rename onLoad to entry, I feel onLoad was a bit too far into meme land. I also really need to add a syntax for child pages. I will need some sort of hash though so I dont have import loops. I think if I do something like this, and skip repeat pages I'll be fine. However it may be nice to hash page data so that parametric pages dont overlap, like if you have 2 seperate pages linked to the same url, the framework should add -n identifiers and warn that the urls dont clash.
+First off I really want to rename onLoad to entry, I feel onLoad was a bit too far into meme land. Im also not the biggest fan of the .u function to apply a style, maybe I could do .with. Its also maybe possible to make a helper instead, and then I could do web.Style(... Properties ...)("contents"), thought thatll be alot of templating. Finally I really will need to add a syntax for child pages. I will need some sort of hash though so I dont have import loops. I think if I do something like this, and skip repeat pages I'll be fine. However it may be nice to hash page data so that parametric pages dont overlap, like if you have 2 seperate pages linked to the same url, the framework should add -n identifiers and warn that the urls dont clash.
 
 %code: zig
 const web = @import("the_zig_three");
-// main url is index.html, note no html I want people to forget its a thing.
+// main url is index.html
+// note there is no .html: I want people to forget its a thing.
 pub const main = web.mainFn(@This(), "index");
 
 const Index = @This();
