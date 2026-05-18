@@ -1,4 +1,4 @@
-%title: Addign javascript where it shouldnt be.
+%title: Adding javascript where it shouldnt be.
 %date: 2026 05/14
 %url: website-redesign-6
 
@@ -15,7 +15,7 @@ const consoleLog = web.function(struct {a: []const u8}, void,
 const Self = @This();
 
 pub fn onLoad(root: *web.Unit, self: Self) !void {
-  consoleLog("Hello World!");
+  consoleLog(.{.a = "Hello World!"});
 }
 %end: code
 
@@ -23,3 +23,4 @@ I think this finally finishes covering everything the framework will need for pr
 
 %link: First Part=https://prestosilver.info/posts/website-redesign-1.html
 %link: Previous Part=https://prestosilver.info/posts/website-redesign-5.html
+%link: Next Part=https://prestosilver.info/posts/website-redesign-7.html

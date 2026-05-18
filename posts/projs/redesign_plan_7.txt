@@ -1,0 +1,48 @@
+%title: Prototype 2 postmortem
+%date: 2026 05/18
+%url: website-redesign-7
+
+Ok so I finished prototype 2, this stupid idea is actually working? There was very little friction with the planning from parts 4-6, however part 6 in particular had some issues. I had to include function signatures rather than a struct for now. I can switch this over to a better template later. The main issue was that the function had trouble emitting.
+
+%head: The hacks
+
+I ended up switching my "x-time" naming to passes, so currently there is a client pass, server pass, generation pass, and script pass. This was so I can run over generation multiple times, and emit the js into a file. I also made my wasm engine export to a "index.js" file. However I may also include a style pass. The framework also lazily includes styles in its sheet avoiding unused and empty ones, though I will likely have to add some verification so I can avoid conflicting styles.
+
+I also combined addChild and addChildren, zig will just check if the input is a tuple and treat it like addChildren used to.
+
+%head: Whats next
+
+
+First off I really want to rename onLoad to entry, I feel onLoad was a bit too far into meme land. I also really need to add a syntax for child pages. I will need some sort of hash though so I dont have import loops. I think if I do something like this, and skip repeat pages I'll be fine. However it may be nice to hash page data so that parametric pages dont overlap, like if you have 2 seperate pages linked to the same url, the framework should add -n identifiers and warn that the urls dont clash.
+
+%code: zig
+const web = @import("the_zig_three");
+// main url is index.html, note no html I want people to forget its a thing.
+pub const main = web.mainFn(@This(), "index");
+
+const Index = @This();
+
+pub fn entry(root: *web.Unit, _: Index) !void {
+    try root.add(.{
+        "test",
+        // post url is post-3.html, this function will generate the page and give an absolute hyperlink
+        // This syntax is nasty, maybe I should add a helper function instead?
+        (web.Style{ .tag = "a", .attributes = &.{ .key = "href", .value = web.page(@import("post"), "post-1", .{ .file = "post-1.txt" }) } }).u(
+          "link to post 1",
+        ),
+        
+        // something like this should be a shorthand for it
+        web.Link(@import("post"), "post-2", .{ .file = "post-2.txt" }, .{
+          "link to post 2",
+        }),
+
+        // this should cause 2 seperate links to exist post-1-1 and post-1-2 since the post instance for the url is not identical
+        web.Link(@import("post"), "post-1", .{ .file = "post-3.txt" }, .{
+          "link to post 3",
+        }),
+    });
+}
+%end: code
+
+%link: First Part=https://prestosilver.info/posts/website-redesign-1.html
+%link: Previous Part=https://prestosilver.info/posts/website-redesign-6.html
