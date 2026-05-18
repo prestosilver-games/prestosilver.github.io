@@ -26,20 +26,21 @@ pub fn entry(root: *web.Unit, _: Index) !void {
     try root.add(.{
         "test",
         // post url is post-3.html, this function will generate the page and give an absolute hyperlink
-        // This syntax is nasty, maybe I should add a helper function instead?
-        (web.Style{ .tag = "a", .attributes = &.{ .key = "href", .value = web.page(@import("post"), "post-1", .{ .file = "post-1.txt" }) } }).u(
+        // This syntax is kinda wordy, maybe I should add a helper function as well?
+        web.Style(.{ .tag = "a", .attributes = &.{ .key = "href", .value = web.page(@import("post"), "post-1", .{ .file = "post-1.txt" }) } })(
           "link to post 1",
         ),
         
         // something like this should be a shorthand for it
-        web.Link(@import("post"), "post-2", .{ .file = "post-2.txt" }, .{
+        web.Link(@import("post"), "post-2", .{ .file = "post-2.txt" })(.{
           "link to post 2",
         }),
 
         // this should cause 2 seperate links to exist post-1-1 and post-1-2 since the post instance for the url is not identical
-        web.Link(@import("post"), "post-1", .{ .file = "post-3.txt" }, .{
-          "link to post 3",
-        }),
+        web.Link(@import("post"), "post-1", .{ .file = "post-3.txt" })("link to post 3"),
+
+        // this wont cause 2 seperate links to exist since the post instances for the url are identical, even if the contents arent
+        web.Link(@import("post"), "post-1", .{ .file = "post-1.txt" })("link to post 4"),
     });
 }
 %end: code
