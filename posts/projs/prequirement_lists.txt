@@ -1,0 +1,65 @@
+%title: A new planning format - Prequirement lists
+%date: 2026 07/22
+%url: prequirements
+
+When I was in college one class really stuck out to me. It was one I was dreading for pretty much my whole education, called "Requirements Enginering". I didnt know it at the time, but this would quickly become my favorite class I've taken. Even after dropping out, I still fondly remember my time spent in this class.
+
+I recently started thinking to myself "How can I use the stuff I learned there more often". And because of this, I started work on the new system I now use to plan my projects.
+
+%head: Bro you cant just combine words, what is this thing? And how do I make one?
+
+Im glad you asked, A prequirement list is something you can use to plan early projects. Its actually quite simple too, its just a fancy bulleted list.
+
+The first step is to get your primary task on the board:
+%code: markdown
+- Write a post on prequirement lists [Task]
+%end: code
+
+Follow this up by any hard requirements for this task:
+%code: markdown
+- Write a post on prequirement lists [Task]
+    - Get other people to use them [Requirement]
+    - Show how to start one [Requirement]
+%end: code
+
+Next you start your main planning loop, begin by picking a task in the list that requires more information, and split it up:
+%code: markdown
+- Write a post on prequirement lists [Task]
+    - Get other people to use them [Requirement]
+        - Show why I use them
+        - Show why theyre amazing
+        - Show why they are easy to maintain
+    - Show how to start one [Requirement]
+%end: code
+
+If there are multiple mutually exclusive fulfillments of the task you can use a different bullets
+%code: markdown
+- Write a post on prequirement lists [Task]
+    - Get other people to use them [Requirement]
+        - Show why I use them
+        - Show why theyre amazing
+        - Show why they are easy to maintain
+    - Show how to start one [Requirement]
+        * Just throw my fnaf jam one in
+        * Explain step by step
+%end: code
+
+After you finished getting all your ideas on, look at the mutually exclusive tasks, if any of them are implied by tasks you know your doing cross off their neighbors. If theyre implied to not happen cross them off.
+%code: markdown
+- Write a post on prequirement lists [Task]
+    - Get other people to use them [Requirement]
+        - Show why I use them
+        - Show why theyre amazing
+        - Show why they are easy to maintain
+    - Show how to start one [Requirement]
+        * ~~Just throw my fnaf jam one in~~ (This wont get other people to use them)
+        * Explain step by step
+%end: code
+
+Finally, if you have any other mutually exclusive tasks, as a team you can logic your way to making your decisions.
+
+Remember the most important part of these diagrams is to be overly verbose, if you have a stupid fullfilment put it down, it may endup helping cross off some other decisions that didnt immediatly sound stupid.
+
+%head: Keeping it up to date
+
+Once you start your project, it helps to split these tasks live, you can use the same process above to do this. Making sure to eliminate mutually exclusive ideas. You can even add bullets to this and use it as a live todo list tracker too. Theres no harm in modding the system a random guy on the internet proposed to you.
